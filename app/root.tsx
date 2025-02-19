@@ -6,6 +6,8 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
+import { Alert, AlertDescription, AlertTitle } from "./components/ui/alert";
+import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card";
 
 import type { Route } from "./+types/root";
 import "./app.css";
@@ -49,14 +51,38 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
-        </pre>
-      )}
-    </main>
+    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-b from-background/50 to-background/95">
+      <Card className="w-full max-w-2xl border-none shadow-2xl bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/50">
+        <CardHeader className="space-y-1 text-center pb-2">
+          <CardTitle className="text-4xl font-bold tracking-tight">
+            {message}
+          </CardTitle>
+          <p className="text-sm text-muted-foreground">エラーが発生しました</p>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <Alert
+            variant="destructive"
+            className="border-destructive/50 bg-destructive/10"
+          >
+            <AlertTitle className="text-destructive font-medium">
+              問題が発生しました
+            </AlertTitle>
+            <AlertDescription className="text-destructive/90 mt-2">
+              {details}
+            </AlertDescription>
+          </Alert>
+
+          {stack && (
+            <Card className="bg-muted/50 border-none shadow-inner">
+              <CardContent className="p-4">
+                <pre className="w-full overflow-x-auto text-sm text-muted-foreground">
+                  <code>{stack}</code>
+                </pre>
+              </CardContent>
+            </Card>
+          )}
+        </CardContent>
+      </Card>
+    </div>
   );
 }
