@@ -849,7 +849,7 @@ export function useAppControllerGetHello<TData = Awaited<ReturnType<typeof appCo
 /**
  * @summary ログイン
  */
-export const authControllerSignIn = (
+export const login = (
     signInDto: SignInDto,
  signal?: AbortSignal
 ) => {
@@ -865,11 +865,11 @@ export const authControllerSignIn = (
   
 
 
-export const getAuthControllerSignInMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof authControllerSignIn>>, TError,{data: SignInDto}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof authControllerSignIn>>, TError,{data: SignInDto}, TContext> => {
+export const getLoginMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof login>>, TError,{data: SignInDto}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof login>>, TError,{data: SignInDto}, TContext> => {
     
-const mutationKey = ['authControllerSignIn'];
+const mutationKey = ['login'];
 const {mutation: mutationOptions} = options ?
       options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
       options
@@ -879,10 +879,10 @@ const {mutation: mutationOptions} = options ?
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof authControllerSignIn>>, {data: SignInDto}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof login>>, {data: SignInDto}> = (props) => {
           const {data} = props ?? {};
 
-          return  authControllerSignIn(data,)
+          return  login(data,)
         }
 
         
@@ -890,23 +890,23 @@ const {mutation: mutationOptions} = options ?
 
   return  { mutationFn, ...mutationOptions }}
 
-    export type AuthControllerSignInMutationResult = NonNullable<Awaited<ReturnType<typeof authControllerSignIn>>>
-    export type AuthControllerSignInMutationBody = SignInDto
-    export type AuthControllerSignInMutationError = unknown
+    export type LoginMutationResult = NonNullable<Awaited<ReturnType<typeof login>>>
+    export type LoginMutationBody = SignInDto
+    export type LoginMutationError = unknown
 
     /**
  * @summary ログイン
  */
-export const useAuthControllerSignIn = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof authControllerSignIn>>, TError,{data: SignInDto}, TContext>, }
+export const useLogin = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof login>>, TError,{data: SignInDto}, TContext>, }
 ): UseMutationResult<
-        Awaited<ReturnType<typeof authControllerSignIn>>,
+        Awaited<ReturnType<typeof login>>,
         TError,
         {data: SignInDto},
         TContext
       > => {
 
-      const mutationOptions = getAuthControllerSignInMutationOptions(options);
+      const mutationOptions = getLoginMutationOptions(options);
 
       return useMutation(mutationOptions);
     }
@@ -914,7 +914,7 @@ export const useAuthControllerSignIn = <TError = unknown,
 /**
  * @summary ログイン中のユーザー情報を取得
  */
-export const authControllerGetProfile = (
+export const getMe = (
     
  signal?: AbortSignal
 ) => {
@@ -927,67 +927,67 @@ export const authControllerGetProfile = (
     }
   
 
-export const getAuthControllerGetProfileQueryKey = () => {
+export const getGetMeQueryKey = () => {
     return [`/auth/me`] as const;
     }
 
     
-export const getAuthControllerGetProfileQueryOptions = <TData = Awaited<ReturnType<typeof authControllerGetProfile>>, TError = unknown>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof authControllerGetProfile>>, TError, TData>>, }
+export const getGetMeQueryOptions = <TData = Awaited<ReturnType<typeof getMe>>, TError = unknown>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getMe>>, TError, TData>>, }
 ) => {
 
 const {query: queryOptions} = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getAuthControllerGetProfileQueryKey();
+  const queryKey =  queryOptions?.queryKey ?? getGetMeQueryKey();
 
   
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof authControllerGetProfile>>> = ({ signal }) => authControllerGetProfile(signal);
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getMe>>> = ({ signal }) => getMe(signal);
 
       
 
       
 
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof authControllerGetProfile>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getMe>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
 }
 
-export type AuthControllerGetProfileQueryResult = NonNullable<Awaited<ReturnType<typeof authControllerGetProfile>>>
-export type AuthControllerGetProfileQueryError = unknown
+export type GetMeQueryResult = NonNullable<Awaited<ReturnType<typeof getMe>>>
+export type GetMeQueryError = unknown
 
 
-export function useAuthControllerGetProfile<TData = Awaited<ReturnType<typeof authControllerGetProfile>>, TError = unknown>(
-  options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof authControllerGetProfile>>, TError, TData>> & Pick<
+export function useGetMe<TData = Awaited<ReturnType<typeof getMe>>, TError = unknown>(
+  options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getMe>>, TError, TData>> & Pick<
         DefinedInitialDataOptions<
-          Awaited<ReturnType<typeof authControllerGetProfile>>,
+          Awaited<ReturnType<typeof getMe>>,
           TError,
-          Awaited<ReturnType<typeof authControllerGetProfile>>
+          Awaited<ReturnType<typeof getMe>>
         > , 'initialData'
       >, }
 
   ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useAuthControllerGetProfile<TData = Awaited<ReturnType<typeof authControllerGetProfile>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof authControllerGetProfile>>, TError, TData>> & Pick<
+export function useGetMe<TData = Awaited<ReturnType<typeof getMe>>, TError = unknown>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getMe>>, TError, TData>> & Pick<
         UndefinedInitialDataOptions<
-          Awaited<ReturnType<typeof authControllerGetProfile>>,
+          Awaited<ReturnType<typeof getMe>>,
           TError,
-          Awaited<ReturnType<typeof authControllerGetProfile>>
+          Awaited<ReturnType<typeof getMe>>
         > , 'initialData'
       >, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useAuthControllerGetProfile<TData = Awaited<ReturnType<typeof authControllerGetProfile>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof authControllerGetProfile>>, TError, TData>>, }
+export function useGetMe<TData = Awaited<ReturnType<typeof getMe>>, TError = unknown>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getMe>>, TError, TData>>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
 /**
  * @summary ログイン中のユーザー情報を取得
  */
 
-export function useAuthControllerGetProfile<TData = Awaited<ReturnType<typeof authControllerGetProfile>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof authControllerGetProfile>>, TError, TData>>, }
+export function useGetMe<TData = Awaited<ReturnType<typeof getMe>>, TError = unknown>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getMe>>, TError, TData>>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
 
-  const queryOptions = getAuthControllerGetProfileQueryOptions(options)
+  const queryOptions = getGetMeQueryOptions(options)
 
   const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
 
@@ -1002,7 +1002,7 @@ export function useAuthControllerGetProfile<TData = Awaited<ReturnType<typeof au
 /**
  * @summary テナント内のユーザー一覧を取得
  */
-export const usersControllerFindByTenant = (
+export const getUsers = (
     tenantUid?: string,
  signal?: AbortSignal
 ) => {
@@ -1015,67 +1015,67 @@ export const usersControllerFindByTenant = (
     }
   
 
-export const getUsersControllerFindByTenantQueryKey = (tenantUid?: string,) => {
+export const getGetUsersQueryKey = (tenantUid?: string,) => {
     return [`/tenants/${tenantUid}/users`] as const;
     }
 
     
-export const getUsersControllerFindByTenantQueryOptions = <TData = Awaited<ReturnType<typeof usersControllerFindByTenant>>, TError = unknown>(tenantUid?: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof usersControllerFindByTenant>>, TError, TData>>, }
+export const getGetUsersQueryOptions = <TData = Awaited<ReturnType<typeof getUsers>>, TError = unknown>(tenantUid?: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getUsers>>, TError, TData>>, }
 ) => {
 
 const {query: queryOptions} = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getUsersControllerFindByTenantQueryKey(tenantUid);
+  const queryKey =  queryOptions?.queryKey ?? getGetUsersQueryKey(tenantUid);
 
   
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof usersControllerFindByTenant>>> = ({ signal }) => usersControllerFindByTenant(tenantUid, signal);
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getUsers>>> = ({ signal }) => getUsers(tenantUid, signal);
 
       
 
       
 
-   return  { queryKey, queryFn, enabled: !!(tenantUid), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof usersControllerFindByTenant>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
+   return  { queryKey, queryFn, enabled: !!(tenantUid), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getUsers>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
 }
 
-export type UsersControllerFindByTenantQueryResult = NonNullable<Awaited<ReturnType<typeof usersControllerFindByTenant>>>
-export type UsersControllerFindByTenantQueryError = unknown
+export type GetUsersQueryResult = NonNullable<Awaited<ReturnType<typeof getUsers>>>
+export type GetUsersQueryError = unknown
 
 
-export function useUsersControllerFindByTenant<TData = Awaited<ReturnType<typeof usersControllerFindByTenant>>, TError = unknown>(
- tenantUid: undefined |  string, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof usersControllerFindByTenant>>, TError, TData>> & Pick<
+export function useGetUsers<TData = Awaited<ReturnType<typeof getUsers>>, TError = unknown>(
+ tenantUid: undefined |  string, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getUsers>>, TError, TData>> & Pick<
         DefinedInitialDataOptions<
-          Awaited<ReturnType<typeof usersControllerFindByTenant>>,
+          Awaited<ReturnType<typeof getUsers>>,
           TError,
-          Awaited<ReturnType<typeof usersControllerFindByTenant>>
+          Awaited<ReturnType<typeof getUsers>>
         > , 'initialData'
       >, }
 
   ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useUsersControllerFindByTenant<TData = Awaited<ReturnType<typeof usersControllerFindByTenant>>, TError = unknown>(
- tenantUid?: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof usersControllerFindByTenant>>, TError, TData>> & Pick<
+export function useGetUsers<TData = Awaited<ReturnType<typeof getUsers>>, TError = unknown>(
+ tenantUid?: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getUsers>>, TError, TData>> & Pick<
         UndefinedInitialDataOptions<
-          Awaited<ReturnType<typeof usersControllerFindByTenant>>,
+          Awaited<ReturnType<typeof getUsers>>,
           TError,
-          Awaited<ReturnType<typeof usersControllerFindByTenant>>
+          Awaited<ReturnType<typeof getUsers>>
         > , 'initialData'
       >, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useUsersControllerFindByTenant<TData = Awaited<ReturnType<typeof usersControllerFindByTenant>>, TError = unknown>(
- tenantUid?: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof usersControllerFindByTenant>>, TError, TData>>, }
+export function useGetUsers<TData = Awaited<ReturnType<typeof getUsers>>, TError = unknown>(
+ tenantUid?: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getUsers>>, TError, TData>>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
 /**
  * @summary テナント内のユーザー一覧を取得
  */
 
-export function useUsersControllerFindByTenant<TData = Awaited<ReturnType<typeof usersControllerFindByTenant>>, TError = unknown>(
- tenantUid?: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof usersControllerFindByTenant>>, TError, TData>>, }
+export function useGetUsers<TData = Awaited<ReturnType<typeof getUsers>>, TError = unknown>(
+ tenantUid?: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getUsers>>, TError, TData>>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
 
-  const queryOptions = getUsersControllerFindByTenantQueryOptions(tenantUid,options)
+  const queryOptions = getGetUsersQueryOptions(tenantUid,options)
 
   const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
 
@@ -1090,7 +1090,7 @@ export function useUsersControllerFindByTenant<TData = Awaited<ReturnType<typeof
 /**
  * @summary テナントにユーザーを作成
  */
-export const usersControllerCreateUser = (
+export const createUser = (
     tenantUid: string,
     tenantUserCreateInputDto: TenantUserCreateInputDto,
  signal?: AbortSignal
@@ -1107,11 +1107,11 @@ export const usersControllerCreateUser = (
   
 
 
-export const getUsersControllerCreateUserMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof usersControllerCreateUser>>, TError,{tenantUid: string;data: TenantUserCreateInputDto}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof usersControllerCreateUser>>, TError,{tenantUid: string;data: TenantUserCreateInputDto}, TContext> => {
+export const getCreateUserMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createUser>>, TError,{tenantUid: string;data: TenantUserCreateInputDto}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof createUser>>, TError,{tenantUid: string;data: TenantUserCreateInputDto}, TContext> => {
     
-const mutationKey = ['usersControllerCreateUser'];
+const mutationKey = ['createUser'];
 const {mutation: mutationOptions} = options ?
       options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
       options
@@ -1121,10 +1121,10 @@ const {mutation: mutationOptions} = options ?
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof usersControllerCreateUser>>, {tenantUid: string;data: TenantUserCreateInputDto}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof createUser>>, {tenantUid: string;data: TenantUserCreateInputDto}> = (props) => {
           const {tenantUid,data} = props ?? {};
 
-          return  usersControllerCreateUser(tenantUid,data,)
+          return  createUser(tenantUid,data,)
         }
 
         
@@ -1132,23 +1132,23 @@ const {mutation: mutationOptions} = options ?
 
   return  { mutationFn, ...mutationOptions }}
 
-    export type UsersControllerCreateUserMutationResult = NonNullable<Awaited<ReturnType<typeof usersControllerCreateUser>>>
-    export type UsersControllerCreateUserMutationBody = TenantUserCreateInputDto
-    export type UsersControllerCreateUserMutationError = unknown
+    export type CreateUserMutationResult = NonNullable<Awaited<ReturnType<typeof createUser>>>
+    export type CreateUserMutationBody = TenantUserCreateInputDto
+    export type CreateUserMutationError = unknown
 
     /**
  * @summary テナントにユーザーを作成
  */
-export const useUsersControllerCreateUser = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof usersControllerCreateUser>>, TError,{tenantUid: string;data: TenantUserCreateInputDto}, TContext>, }
+export const useCreateUser = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createUser>>, TError,{tenantUid: string;data: TenantUserCreateInputDto}, TContext>, }
 ): UseMutationResult<
-        Awaited<ReturnType<typeof usersControllerCreateUser>>,
+        Awaited<ReturnType<typeof createUser>>,
         TError,
         {tenantUid: string;data: TenantUserCreateInputDto},
         TContext
       > => {
 
-      const mutationOptions = getUsersControllerCreateUserMutationOptions(options);
+      const mutationOptions = getCreateUserMutationOptions(options);
 
       return useMutation(mutationOptions);
     }
@@ -1156,7 +1156,7 @@ export const useUsersControllerCreateUser = <TError = unknown,
 /**
  * @summary ユーザーを更新
  */
-export const usersControllerUpdateUser = (
+export const updateUser = (
     uid: string,
     userUpdateInputDto: UserUpdateInputDto,
  ) => {
@@ -1172,11 +1172,11 @@ export const usersControllerUpdateUser = (
   
 
 
-export const getUsersControllerUpdateUserMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof usersControllerUpdateUser>>, TError,{uid: string;data: UserUpdateInputDto}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof usersControllerUpdateUser>>, TError,{uid: string;data: UserUpdateInputDto}, TContext> => {
+export const getUpdateUserMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateUser>>, TError,{uid: string;data: UserUpdateInputDto}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof updateUser>>, TError,{uid: string;data: UserUpdateInputDto}, TContext> => {
     
-const mutationKey = ['usersControllerUpdateUser'];
+const mutationKey = ['updateUser'];
 const {mutation: mutationOptions} = options ?
       options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
       options
@@ -1186,10 +1186,10 @@ const {mutation: mutationOptions} = options ?
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof usersControllerUpdateUser>>, {uid: string;data: UserUpdateInputDto}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof updateUser>>, {uid: string;data: UserUpdateInputDto}> = (props) => {
           const {uid,data} = props ?? {};
 
-          return  usersControllerUpdateUser(uid,data,)
+          return  updateUser(uid,data,)
         }
 
         
@@ -1197,23 +1197,23 @@ const {mutation: mutationOptions} = options ?
 
   return  { mutationFn, ...mutationOptions }}
 
-    export type UsersControllerUpdateUserMutationResult = NonNullable<Awaited<ReturnType<typeof usersControllerUpdateUser>>>
-    export type UsersControllerUpdateUserMutationBody = UserUpdateInputDto
-    export type UsersControllerUpdateUserMutationError = unknown
+    export type UpdateUserMutationResult = NonNullable<Awaited<ReturnType<typeof updateUser>>>
+    export type UpdateUserMutationBody = UserUpdateInputDto
+    export type UpdateUserMutationError = unknown
 
     /**
  * @summary ユーザーを更新
  */
-export const useUsersControllerUpdateUser = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof usersControllerUpdateUser>>, TError,{uid: string;data: UserUpdateInputDto}, TContext>, }
+export const useUpdateUser = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateUser>>, TError,{uid: string;data: UserUpdateInputDto}, TContext>, }
 ): UseMutationResult<
-        Awaited<ReturnType<typeof usersControllerUpdateUser>>,
+        Awaited<ReturnType<typeof updateUser>>,
         TError,
         {uid: string;data: UserUpdateInputDto},
         TContext
       > => {
 
-      const mutationOptions = getUsersControllerUpdateUserMutationOptions(options);
+      const mutationOptions = getUpdateUserMutationOptions(options);
 
       return useMutation(mutationOptions);
     }
@@ -1221,7 +1221,7 @@ export const useUsersControllerUpdateUser = <TError = unknown,
 /**
  * @summary ユーザーを削除
  */
-export const usersControllerDeleteUser = (
+export const deleteUser = (
     uid: string,
  ) => {
       
@@ -1234,11 +1234,11 @@ export const usersControllerDeleteUser = (
   
 
 
-export const getUsersControllerDeleteUserMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof usersControllerDeleteUser>>, TError,{uid: string}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof usersControllerDeleteUser>>, TError,{uid: string}, TContext> => {
+export const getDeleteUserMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteUser>>, TError,{uid: string}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof deleteUser>>, TError,{uid: string}, TContext> => {
     
-const mutationKey = ['usersControllerDeleteUser'];
+const mutationKey = ['deleteUser'];
 const {mutation: mutationOptions} = options ?
       options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
       options
@@ -1248,10 +1248,10 @@ const {mutation: mutationOptions} = options ?
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof usersControllerDeleteUser>>, {uid: string}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof deleteUser>>, {uid: string}> = (props) => {
           const {uid} = props ?? {};
 
-          return  usersControllerDeleteUser(uid,)
+          return  deleteUser(uid,)
         }
 
         
@@ -1259,23 +1259,23 @@ const {mutation: mutationOptions} = options ?
 
   return  { mutationFn, ...mutationOptions }}
 
-    export type UsersControllerDeleteUserMutationResult = NonNullable<Awaited<ReturnType<typeof usersControllerDeleteUser>>>
+    export type DeleteUserMutationResult = NonNullable<Awaited<ReturnType<typeof deleteUser>>>
     
-    export type UsersControllerDeleteUserMutationError = unknown
+    export type DeleteUserMutationError = unknown
 
     /**
  * @summary ユーザーを削除
  */
-export const useUsersControllerDeleteUser = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof usersControllerDeleteUser>>, TError,{uid: string}, TContext>, }
+export const useDeleteUser = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteUser>>, TError,{uid: string}, TContext>, }
 ): UseMutationResult<
-        Awaited<ReturnType<typeof usersControllerDeleteUser>>,
+        Awaited<ReturnType<typeof deleteUser>>,
         TError,
         {uid: string},
         TContext
       > => {
 
-      const mutationOptions = getUsersControllerDeleteUserMutationOptions(options);
+      const mutationOptions = getDeleteUserMutationOptions(options);
 
       return useMutation(mutationOptions);
     }
@@ -1283,7 +1283,7 @@ export const useUsersControllerDeleteUser = <TError = unknown,
 /**
  * @summary テナント一覧を取得
  */
-export const tenantsControllerFindAll = (
+export const getTenants = (
     
  signal?: AbortSignal
 ) => {
@@ -1296,67 +1296,67 @@ export const tenantsControllerFindAll = (
     }
   
 
-export const getTenantsControllerFindAllQueryKey = () => {
+export const getGetTenantsQueryKey = () => {
     return [`/tenants`] as const;
     }
 
     
-export const getTenantsControllerFindAllQueryOptions = <TData = Awaited<ReturnType<typeof tenantsControllerFindAll>>, TError = unknown>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof tenantsControllerFindAll>>, TError, TData>>, }
+export const getGetTenantsQueryOptions = <TData = Awaited<ReturnType<typeof getTenants>>, TError = unknown>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getTenants>>, TError, TData>>, }
 ) => {
 
 const {query: queryOptions} = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getTenantsControllerFindAllQueryKey();
+  const queryKey =  queryOptions?.queryKey ?? getGetTenantsQueryKey();
 
   
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof tenantsControllerFindAll>>> = ({ signal }) => tenantsControllerFindAll(signal);
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getTenants>>> = ({ signal }) => getTenants(signal);
 
       
 
       
 
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof tenantsControllerFindAll>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getTenants>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
 }
 
-export type TenantsControllerFindAllQueryResult = NonNullable<Awaited<ReturnType<typeof tenantsControllerFindAll>>>
-export type TenantsControllerFindAllQueryError = unknown
+export type GetTenantsQueryResult = NonNullable<Awaited<ReturnType<typeof getTenants>>>
+export type GetTenantsQueryError = unknown
 
 
-export function useTenantsControllerFindAll<TData = Awaited<ReturnType<typeof tenantsControllerFindAll>>, TError = unknown>(
-  options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof tenantsControllerFindAll>>, TError, TData>> & Pick<
+export function useGetTenants<TData = Awaited<ReturnType<typeof getTenants>>, TError = unknown>(
+  options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getTenants>>, TError, TData>> & Pick<
         DefinedInitialDataOptions<
-          Awaited<ReturnType<typeof tenantsControllerFindAll>>,
+          Awaited<ReturnType<typeof getTenants>>,
           TError,
-          Awaited<ReturnType<typeof tenantsControllerFindAll>>
+          Awaited<ReturnType<typeof getTenants>>
         > , 'initialData'
       >, }
 
   ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useTenantsControllerFindAll<TData = Awaited<ReturnType<typeof tenantsControllerFindAll>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof tenantsControllerFindAll>>, TError, TData>> & Pick<
+export function useGetTenants<TData = Awaited<ReturnType<typeof getTenants>>, TError = unknown>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getTenants>>, TError, TData>> & Pick<
         UndefinedInitialDataOptions<
-          Awaited<ReturnType<typeof tenantsControllerFindAll>>,
+          Awaited<ReturnType<typeof getTenants>>,
           TError,
-          Awaited<ReturnType<typeof tenantsControllerFindAll>>
+          Awaited<ReturnType<typeof getTenants>>
         > , 'initialData'
       >, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useTenantsControllerFindAll<TData = Awaited<ReturnType<typeof tenantsControllerFindAll>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof tenantsControllerFindAll>>, TError, TData>>, }
+export function useGetTenants<TData = Awaited<ReturnType<typeof getTenants>>, TError = unknown>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getTenants>>, TError, TData>>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
 /**
  * @summary テナント一覧を取得
  */
 
-export function useTenantsControllerFindAll<TData = Awaited<ReturnType<typeof tenantsControllerFindAll>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof tenantsControllerFindAll>>, TError, TData>>, }
+export function useGetTenants<TData = Awaited<ReturnType<typeof getTenants>>, TError = unknown>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getTenants>>, TError, TData>>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
 
-  const queryOptions = getTenantsControllerFindAllQueryOptions(options)
+  const queryOptions = getGetTenantsQueryOptions(options)
 
   const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
 
@@ -1371,7 +1371,7 @@ export function useTenantsControllerFindAll<TData = Awaited<ReturnType<typeof te
 /**
  * @summary テナントを作成する
  */
-export const tenantsControllerCreate = (
+export const createTenant = (
     tenantCreateInputDto: TenantCreateInputDto,
  signal?: AbortSignal
 ) => {
@@ -1387,11 +1387,11 @@ export const tenantsControllerCreate = (
   
 
 
-export const getTenantsControllerCreateMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof tenantsControllerCreate>>, TError,{data: TenantCreateInputDto}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof tenantsControllerCreate>>, TError,{data: TenantCreateInputDto}, TContext> => {
+export const getCreateTenantMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createTenant>>, TError,{data: TenantCreateInputDto}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof createTenant>>, TError,{data: TenantCreateInputDto}, TContext> => {
     
-const mutationKey = ['tenantsControllerCreate'];
+const mutationKey = ['createTenant'];
 const {mutation: mutationOptions} = options ?
       options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
       options
@@ -1401,10 +1401,10 @@ const {mutation: mutationOptions} = options ?
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof tenantsControllerCreate>>, {data: TenantCreateInputDto}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof createTenant>>, {data: TenantCreateInputDto}> = (props) => {
           const {data} = props ?? {};
 
-          return  tenantsControllerCreate(data,)
+          return  createTenant(data,)
         }
 
         
@@ -1412,23 +1412,23 @@ const {mutation: mutationOptions} = options ?
 
   return  { mutationFn, ...mutationOptions }}
 
-    export type TenantsControllerCreateMutationResult = NonNullable<Awaited<ReturnType<typeof tenantsControllerCreate>>>
-    export type TenantsControllerCreateMutationBody = TenantCreateInputDto
-    export type TenantsControllerCreateMutationError = unknown
+    export type CreateTenantMutationResult = NonNullable<Awaited<ReturnType<typeof createTenant>>>
+    export type CreateTenantMutationBody = TenantCreateInputDto
+    export type CreateTenantMutationError = unknown
 
     /**
  * @summary テナントを作成する
  */
-export const useTenantsControllerCreate = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof tenantsControllerCreate>>, TError,{data: TenantCreateInputDto}, TContext>, }
+export const useCreateTenant = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createTenant>>, TError,{data: TenantCreateInputDto}, TContext>, }
 ): UseMutationResult<
-        Awaited<ReturnType<typeof tenantsControllerCreate>>,
+        Awaited<ReturnType<typeof createTenant>>,
         TError,
         {data: TenantCreateInputDto},
         TContext
       > => {
 
-      const mutationOptions = getTenantsControllerCreateMutationOptions(options);
+      const mutationOptions = getCreateTenantMutationOptions(options);
 
       return useMutation(mutationOptions);
     }
@@ -1436,7 +1436,7 @@ export const useTenantsControllerCreate = <TError = unknown,
 /**
  * @summary テナントを更新
  */
-export const tenantsControllerUpdate = (
+export const updateTenant = (
     uid: string,
     tenantUpdateInputDto: TenantUpdateInputDto,
  ) => {
@@ -1452,11 +1452,11 @@ export const tenantsControllerUpdate = (
   
 
 
-export const getTenantsControllerUpdateMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof tenantsControllerUpdate>>, TError,{uid: string;data: TenantUpdateInputDto}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof tenantsControllerUpdate>>, TError,{uid: string;data: TenantUpdateInputDto}, TContext> => {
+export const getUpdateTenantMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateTenant>>, TError,{uid: string;data: TenantUpdateInputDto}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof updateTenant>>, TError,{uid: string;data: TenantUpdateInputDto}, TContext> => {
     
-const mutationKey = ['tenantsControllerUpdate'];
+const mutationKey = ['updateTenant'];
 const {mutation: mutationOptions} = options ?
       options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
       options
@@ -1466,10 +1466,10 @@ const {mutation: mutationOptions} = options ?
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof tenantsControllerUpdate>>, {uid: string;data: TenantUpdateInputDto}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof updateTenant>>, {uid: string;data: TenantUpdateInputDto}> = (props) => {
           const {uid,data} = props ?? {};
 
-          return  tenantsControllerUpdate(uid,data,)
+          return  updateTenant(uid,data,)
         }
 
         
@@ -1477,23 +1477,23 @@ const {mutation: mutationOptions} = options ?
 
   return  { mutationFn, ...mutationOptions }}
 
-    export type TenantsControllerUpdateMutationResult = NonNullable<Awaited<ReturnType<typeof tenantsControllerUpdate>>>
-    export type TenantsControllerUpdateMutationBody = TenantUpdateInputDto
-    export type TenantsControllerUpdateMutationError = unknown
+    export type UpdateTenantMutationResult = NonNullable<Awaited<ReturnType<typeof updateTenant>>>
+    export type UpdateTenantMutationBody = TenantUpdateInputDto
+    export type UpdateTenantMutationError = unknown
 
     /**
  * @summary テナントを更新
  */
-export const useTenantsControllerUpdate = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof tenantsControllerUpdate>>, TError,{uid: string;data: TenantUpdateInputDto}, TContext>, }
+export const useUpdateTenant = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateTenant>>, TError,{uid: string;data: TenantUpdateInputDto}, TContext>, }
 ): UseMutationResult<
-        Awaited<ReturnType<typeof tenantsControllerUpdate>>,
+        Awaited<ReturnType<typeof updateTenant>>,
         TError,
         {uid: string;data: TenantUpdateInputDto},
         TContext
       > => {
 
-      const mutationOptions = getTenantsControllerUpdateMutationOptions(options);
+      const mutationOptions = getUpdateTenantMutationOptions(options);
 
       return useMutation(mutationOptions);
     }
@@ -1501,7 +1501,7 @@ export const useTenantsControllerUpdate = <TError = unknown,
 /**
  * @summary テナントを削除
  */
-export const tenantsControllerDelete = (
+export const deleteTenant = (
     uid: string,
  ) => {
       
@@ -1514,11 +1514,11 @@ export const tenantsControllerDelete = (
   
 
 
-export const getTenantsControllerDeleteMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof tenantsControllerDelete>>, TError,{uid: string}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof tenantsControllerDelete>>, TError,{uid: string}, TContext> => {
+export const getDeleteTenantMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteTenant>>, TError,{uid: string}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof deleteTenant>>, TError,{uid: string}, TContext> => {
     
-const mutationKey = ['tenantsControllerDelete'];
+const mutationKey = ['deleteTenant'];
 const {mutation: mutationOptions} = options ?
       options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
       options
@@ -1528,10 +1528,10 @@ const {mutation: mutationOptions} = options ?
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof tenantsControllerDelete>>, {uid: string}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof deleteTenant>>, {uid: string}> = (props) => {
           const {uid} = props ?? {};
 
-          return  tenantsControllerDelete(uid,)
+          return  deleteTenant(uid,)
         }
 
         
@@ -1539,23 +1539,23 @@ const {mutation: mutationOptions} = options ?
 
   return  { mutationFn, ...mutationOptions }}
 
-    export type TenantsControllerDeleteMutationResult = NonNullable<Awaited<ReturnType<typeof tenantsControllerDelete>>>
+    export type DeleteTenantMutationResult = NonNullable<Awaited<ReturnType<typeof deleteTenant>>>
     
-    export type TenantsControllerDeleteMutationError = unknown
+    export type DeleteTenantMutationError = unknown
 
     /**
  * @summary テナントを削除
  */
-export const useTenantsControllerDelete = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof tenantsControllerDelete>>, TError,{uid: string}, TContext>, }
+export const useDeleteTenant = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteTenant>>, TError,{uid: string}, TContext>, }
 ): UseMutationResult<
-        Awaited<ReturnType<typeof tenantsControllerDelete>>,
+        Awaited<ReturnType<typeof deleteTenant>>,
         TError,
         {uid: string},
         TContext
       > => {
 
-      const mutationOptions = getTenantsControllerDeleteMutationOptions(options);
+      const mutationOptions = getDeleteTenantMutationOptions(options);
 
       return useMutation(mutationOptions);
     }
@@ -1563,7 +1563,7 @@ export const useTenantsControllerDelete = <TError = unknown,
 /**
  * @summary テナント内の利用者一覧を取得
  */
-export const residentsControllerFindByTenant = (
+export const getResidents = (
     tenantUid?: string,
  signal?: AbortSignal
 ) => {
@@ -1576,67 +1576,67 @@ export const residentsControllerFindByTenant = (
     }
   
 
-export const getResidentsControllerFindByTenantQueryKey = (tenantUid?: string,) => {
+export const getGetResidentsQueryKey = (tenantUid?: string,) => {
     return [`/tenants/${tenantUid}/residents`] as const;
     }
 
     
-export const getResidentsControllerFindByTenantQueryOptions = <TData = Awaited<ReturnType<typeof residentsControllerFindByTenant>>, TError = unknown>(tenantUid?: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof residentsControllerFindByTenant>>, TError, TData>>, }
+export const getGetResidentsQueryOptions = <TData = Awaited<ReturnType<typeof getResidents>>, TError = unknown>(tenantUid?: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getResidents>>, TError, TData>>, }
 ) => {
 
 const {query: queryOptions} = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getResidentsControllerFindByTenantQueryKey(tenantUid);
+  const queryKey =  queryOptions?.queryKey ?? getGetResidentsQueryKey(tenantUid);
 
   
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof residentsControllerFindByTenant>>> = ({ signal }) => residentsControllerFindByTenant(tenantUid, signal);
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getResidents>>> = ({ signal }) => getResidents(tenantUid, signal);
 
       
 
       
 
-   return  { queryKey, queryFn, enabled: !!(tenantUid), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof residentsControllerFindByTenant>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
+   return  { queryKey, queryFn, enabled: !!(tenantUid), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getResidents>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
 }
 
-export type ResidentsControllerFindByTenantQueryResult = NonNullable<Awaited<ReturnType<typeof residentsControllerFindByTenant>>>
-export type ResidentsControllerFindByTenantQueryError = unknown
+export type GetResidentsQueryResult = NonNullable<Awaited<ReturnType<typeof getResidents>>>
+export type GetResidentsQueryError = unknown
 
 
-export function useResidentsControllerFindByTenant<TData = Awaited<ReturnType<typeof residentsControllerFindByTenant>>, TError = unknown>(
- tenantUid: undefined |  string, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof residentsControllerFindByTenant>>, TError, TData>> & Pick<
+export function useGetResidents<TData = Awaited<ReturnType<typeof getResidents>>, TError = unknown>(
+ tenantUid: undefined |  string, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getResidents>>, TError, TData>> & Pick<
         DefinedInitialDataOptions<
-          Awaited<ReturnType<typeof residentsControllerFindByTenant>>,
+          Awaited<ReturnType<typeof getResidents>>,
           TError,
-          Awaited<ReturnType<typeof residentsControllerFindByTenant>>
+          Awaited<ReturnType<typeof getResidents>>
         > , 'initialData'
       >, }
 
   ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useResidentsControllerFindByTenant<TData = Awaited<ReturnType<typeof residentsControllerFindByTenant>>, TError = unknown>(
- tenantUid?: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof residentsControllerFindByTenant>>, TError, TData>> & Pick<
+export function useGetResidents<TData = Awaited<ReturnType<typeof getResidents>>, TError = unknown>(
+ tenantUid?: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getResidents>>, TError, TData>> & Pick<
         UndefinedInitialDataOptions<
-          Awaited<ReturnType<typeof residentsControllerFindByTenant>>,
+          Awaited<ReturnType<typeof getResidents>>,
           TError,
-          Awaited<ReturnType<typeof residentsControllerFindByTenant>>
+          Awaited<ReturnType<typeof getResidents>>
         > , 'initialData'
       >, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useResidentsControllerFindByTenant<TData = Awaited<ReturnType<typeof residentsControllerFindByTenant>>, TError = unknown>(
- tenantUid?: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof residentsControllerFindByTenant>>, TError, TData>>, }
+export function useGetResidents<TData = Awaited<ReturnType<typeof getResidents>>, TError = unknown>(
+ tenantUid?: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getResidents>>, TError, TData>>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
 /**
  * @summary テナント内の利用者一覧を取得
  */
 
-export function useResidentsControllerFindByTenant<TData = Awaited<ReturnType<typeof residentsControllerFindByTenant>>, TError = unknown>(
- tenantUid?: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof residentsControllerFindByTenant>>, TError, TData>>, }
+export function useGetResidents<TData = Awaited<ReturnType<typeof getResidents>>, TError = unknown>(
+ tenantUid?: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getResidents>>, TError, TData>>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
 
-  const queryOptions = getResidentsControllerFindByTenantQueryOptions(tenantUid,options)
+  const queryOptions = getGetResidentsQueryOptions(tenantUid,options)
 
   const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
 
@@ -1651,7 +1651,7 @@ export function useResidentsControllerFindByTenant<TData = Awaited<ReturnType<ty
 /**
  * @summary テナントに利用者を作成
  */
-export const residentsControllerCreateResident = (
+export const createResident = (
     tenantUid: string,
     residentCreateInputDto: ResidentCreateInputDto,
  signal?: AbortSignal
@@ -1668,11 +1668,11 @@ export const residentsControllerCreateResident = (
   
 
 
-export const getResidentsControllerCreateResidentMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof residentsControllerCreateResident>>, TError,{tenantUid: string;data: ResidentCreateInputDto}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof residentsControllerCreateResident>>, TError,{tenantUid: string;data: ResidentCreateInputDto}, TContext> => {
+export const getCreateResidentMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createResident>>, TError,{tenantUid: string;data: ResidentCreateInputDto}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof createResident>>, TError,{tenantUid: string;data: ResidentCreateInputDto}, TContext> => {
     
-const mutationKey = ['residentsControllerCreateResident'];
+const mutationKey = ['createResident'];
 const {mutation: mutationOptions} = options ?
       options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
       options
@@ -1682,10 +1682,10 @@ const {mutation: mutationOptions} = options ?
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof residentsControllerCreateResident>>, {tenantUid: string;data: ResidentCreateInputDto}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof createResident>>, {tenantUid: string;data: ResidentCreateInputDto}> = (props) => {
           const {tenantUid,data} = props ?? {};
 
-          return  residentsControllerCreateResident(tenantUid,data,)
+          return  createResident(tenantUid,data,)
         }
 
         
@@ -1693,31 +1693,126 @@ const {mutation: mutationOptions} = options ?
 
   return  { mutationFn, ...mutationOptions }}
 
-    export type ResidentsControllerCreateResidentMutationResult = NonNullable<Awaited<ReturnType<typeof residentsControllerCreateResident>>>
-    export type ResidentsControllerCreateResidentMutationBody = ResidentCreateInputDto
-    export type ResidentsControllerCreateResidentMutationError = unknown
+    export type CreateResidentMutationResult = NonNullable<Awaited<ReturnType<typeof createResident>>>
+    export type CreateResidentMutationBody = ResidentCreateInputDto
+    export type CreateResidentMutationError = unknown
 
     /**
  * @summary テナントに利用者を作成
  */
-export const useResidentsControllerCreateResident = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof residentsControllerCreateResident>>, TError,{tenantUid: string;data: ResidentCreateInputDto}, TContext>, }
+export const useCreateResident = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createResident>>, TError,{tenantUid: string;data: ResidentCreateInputDto}, TContext>, }
 ): UseMutationResult<
-        Awaited<ReturnType<typeof residentsControllerCreateResident>>,
+        Awaited<ReturnType<typeof createResident>>,
         TError,
         {tenantUid: string;data: ResidentCreateInputDto},
         TContext
       > => {
 
-      const mutationOptions = getResidentsControllerCreateResidentMutationOptions(options);
+      const mutationOptions = getCreateResidentMutationOptions(options);
 
       return useMutation(mutationOptions);
     }
     
 /**
+ * @summary 利用者の詳細を取得
+ */
+export const getResident = (
+    tenantUid: string,
+    uid: string,
+ signal?: AbortSignal
+) => {
+      
+      
+      return customInstance<ResidentDto>(
+      {url: `/tenants/${tenantUid}/residents/${uid}`, method: 'GET', signal
+    },
+      );
+    }
+  
+
+export const getGetResidentQueryKey = (tenantUid: string,
+    uid: string,) => {
+    return [`/tenants/${tenantUid}/residents/${uid}`] as const;
+    }
+
+    
+export const getGetResidentQueryOptions = <TData = Awaited<ReturnType<typeof getResident>>, TError = unknown>(tenantUid: string,
+    uid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getResident>>, TError, TData>>, }
+) => {
+
+const {query: queryOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetResidentQueryKey(tenantUid,uid);
+
+  
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getResident>>> = ({ signal }) => getResident(tenantUid,uid, signal);
+
+      
+
+      
+
+   return  { queryKey, queryFn, enabled: !!(tenantUid && uid), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getResident>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
+}
+
+export type GetResidentQueryResult = NonNullable<Awaited<ReturnType<typeof getResident>>>
+export type GetResidentQueryError = unknown
+
+
+export function useGetResident<TData = Awaited<ReturnType<typeof getResident>>, TError = unknown>(
+ tenantUid: string,
+    uid: string, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getResident>>, TError, TData>> & Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getResident>>,
+          TError,
+          Awaited<ReturnType<typeof getResident>>
+        > , 'initialData'
+      >, }
+
+  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetResident<TData = Awaited<ReturnType<typeof getResident>>, TError = unknown>(
+ tenantUid: string,
+    uid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getResident>>, TError, TData>> & Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getResident>>,
+          TError,
+          Awaited<ReturnType<typeof getResident>>
+        > , 'initialData'
+      >, }
+
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetResident<TData = Awaited<ReturnType<typeof getResident>>, TError = unknown>(
+ tenantUid: string,
+    uid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getResident>>, TError, TData>>, }
+
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+/**
+ * @summary 利用者の詳細を取得
+ */
+
+export function useGetResident<TData = Awaited<ReturnType<typeof getResident>>, TError = unknown>(
+ tenantUid: string,
+    uid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getResident>>, TError, TData>>, }
+
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+
+  const queryOptions = getGetResidentQueryOptions(tenantUid,uid,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
+
+  query.queryKey = queryOptions.queryKey ;
+
+  return query;
+}
+
+
+
+
+/**
  * @summary 利用者を更新
  */
-export const residentsControllerUpdateResident = (
+export const updateResident = (
     tenantUid: string,
     uid: string,
     residentUpdateInputDto: ResidentUpdateInputDto,
@@ -1734,11 +1829,11 @@ export const residentsControllerUpdateResident = (
   
 
 
-export const getResidentsControllerUpdateResidentMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof residentsControllerUpdateResident>>, TError,{tenantUid: string;uid: string;data: ResidentUpdateInputDto}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof residentsControllerUpdateResident>>, TError,{tenantUid: string;uid: string;data: ResidentUpdateInputDto}, TContext> => {
+export const getUpdateResidentMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateResident>>, TError,{tenantUid: string;uid: string;data: ResidentUpdateInputDto}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof updateResident>>, TError,{tenantUid: string;uid: string;data: ResidentUpdateInputDto}, TContext> => {
     
-const mutationKey = ['residentsControllerUpdateResident'];
+const mutationKey = ['updateResident'];
 const {mutation: mutationOptions} = options ?
       options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
       options
@@ -1748,10 +1843,10 @@ const {mutation: mutationOptions} = options ?
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof residentsControllerUpdateResident>>, {tenantUid: string;uid: string;data: ResidentUpdateInputDto}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof updateResident>>, {tenantUid: string;uid: string;data: ResidentUpdateInputDto}> = (props) => {
           const {tenantUid,uid,data} = props ?? {};
 
-          return  residentsControllerUpdateResident(tenantUid,uid,data,)
+          return  updateResident(tenantUid,uid,data,)
         }
 
         
@@ -1759,23 +1854,23 @@ const {mutation: mutationOptions} = options ?
 
   return  { mutationFn, ...mutationOptions }}
 
-    export type ResidentsControllerUpdateResidentMutationResult = NonNullable<Awaited<ReturnType<typeof residentsControllerUpdateResident>>>
-    export type ResidentsControllerUpdateResidentMutationBody = ResidentUpdateInputDto
-    export type ResidentsControllerUpdateResidentMutationError = unknown
+    export type UpdateResidentMutationResult = NonNullable<Awaited<ReturnType<typeof updateResident>>>
+    export type UpdateResidentMutationBody = ResidentUpdateInputDto
+    export type UpdateResidentMutationError = unknown
 
     /**
  * @summary 利用者を更新
  */
-export const useResidentsControllerUpdateResident = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof residentsControllerUpdateResident>>, TError,{tenantUid: string;uid: string;data: ResidentUpdateInputDto}, TContext>, }
+export const useUpdateResident = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateResident>>, TError,{tenantUid: string;uid: string;data: ResidentUpdateInputDto}, TContext>, }
 ): UseMutationResult<
-        Awaited<ReturnType<typeof residentsControllerUpdateResident>>,
+        Awaited<ReturnType<typeof updateResident>>,
         TError,
         {tenantUid: string;uid: string;data: ResidentUpdateInputDto},
         TContext
       > => {
 
-      const mutationOptions = getResidentsControllerUpdateResidentMutationOptions(options);
+      const mutationOptions = getUpdateResidentMutationOptions(options);
 
       return useMutation(mutationOptions);
     }
@@ -1783,7 +1878,7 @@ export const useResidentsControllerUpdateResident = <TError = unknown,
 /**
  * @summary 利用者を削除
  */
-export const residentsControllerDeleteResident = (
+export const deleteResident = (
     tenantUid: string,
     uid: string,
  ) => {
@@ -1797,11 +1892,11 @@ export const residentsControllerDeleteResident = (
   
 
 
-export const getResidentsControllerDeleteResidentMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof residentsControllerDeleteResident>>, TError,{tenantUid: string;uid: string}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof residentsControllerDeleteResident>>, TError,{tenantUid: string;uid: string}, TContext> => {
+export const getDeleteResidentMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteResident>>, TError,{tenantUid: string;uid: string}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof deleteResident>>, TError,{tenantUid: string;uid: string}, TContext> => {
     
-const mutationKey = ['residentsControllerDeleteResident'];
+const mutationKey = ['deleteResident'];
 const {mutation: mutationOptions} = options ?
       options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
       options
@@ -1811,10 +1906,10 @@ const {mutation: mutationOptions} = options ?
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof residentsControllerDeleteResident>>, {tenantUid: string;uid: string}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof deleteResident>>, {tenantUid: string;uid: string}> = (props) => {
           const {tenantUid,uid} = props ?? {};
 
-          return  residentsControllerDeleteResident(tenantUid,uid,)
+          return  deleteResident(tenantUid,uid,)
         }
 
         
@@ -1822,126 +1917,31 @@ const {mutation: mutationOptions} = options ?
 
   return  { mutationFn, ...mutationOptions }}
 
-    export type ResidentsControllerDeleteResidentMutationResult = NonNullable<Awaited<ReturnType<typeof residentsControllerDeleteResident>>>
+    export type DeleteResidentMutationResult = NonNullable<Awaited<ReturnType<typeof deleteResident>>>
     
-    export type ResidentsControllerDeleteResidentMutationError = unknown
+    export type DeleteResidentMutationError = unknown
 
     /**
  * @summary 利用者を削除
  */
-export const useResidentsControllerDeleteResident = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof residentsControllerDeleteResident>>, TError,{tenantUid: string;uid: string}, TContext>, }
+export const useDeleteResident = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteResident>>, TError,{tenantUid: string;uid: string}, TContext>, }
 ): UseMutationResult<
-        Awaited<ReturnType<typeof residentsControllerDeleteResident>>,
+        Awaited<ReturnType<typeof deleteResident>>,
         TError,
         {tenantUid: string;uid: string},
         TContext
       > => {
 
-      const mutationOptions = getResidentsControllerDeleteResidentMutationOptions(options);
+      const mutationOptions = getDeleteResidentMutationOptions(options);
 
       return useMutation(mutationOptions);
     }
     
 /**
- * @summary 利用者の詳細を取得
- */
-export const residentsControllerFindOne = (
-    tenantUid: string,
-    uid: string,
- signal?: AbortSignal
-) => {
-      
-      
-      return customInstance<ResidentDto>(
-      {url: `/tenants/${tenantUid}/residents/${uid}`, method: 'GET', signal
-    },
-      );
-    }
-  
-
-export const getResidentsControllerFindOneQueryKey = (tenantUid: string,
-    uid: string,) => {
-    return [`/tenants/${tenantUid}/residents/${uid}`] as const;
-    }
-
-    
-export const getResidentsControllerFindOneQueryOptions = <TData = Awaited<ReturnType<typeof residentsControllerFindOne>>, TError = unknown>(tenantUid: string,
-    uid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof residentsControllerFindOne>>, TError, TData>>, }
-) => {
-
-const {query: queryOptions} = options ?? {};
-
-  const queryKey =  queryOptions?.queryKey ?? getResidentsControllerFindOneQueryKey(tenantUid,uid);
-
-  
-
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof residentsControllerFindOne>>> = ({ signal }) => residentsControllerFindOne(tenantUid,uid, signal);
-
-      
-
-      
-
-   return  { queryKey, queryFn, enabled: !!(tenantUid && uid), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof residentsControllerFindOne>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type ResidentsControllerFindOneQueryResult = NonNullable<Awaited<ReturnType<typeof residentsControllerFindOne>>>
-export type ResidentsControllerFindOneQueryError = unknown
-
-
-export function useResidentsControllerFindOne<TData = Awaited<ReturnType<typeof residentsControllerFindOne>>, TError = unknown>(
- tenantUid: string,
-    uid: string, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof residentsControllerFindOne>>, TError, TData>> & Pick<
-        DefinedInitialDataOptions<
-          Awaited<ReturnType<typeof residentsControllerFindOne>>,
-          TError,
-          Awaited<ReturnType<typeof residentsControllerFindOne>>
-        > , 'initialData'
-      >, }
-
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useResidentsControllerFindOne<TData = Awaited<ReturnType<typeof residentsControllerFindOne>>, TError = unknown>(
- tenantUid: string,
-    uid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof residentsControllerFindOne>>, TError, TData>> & Pick<
-        UndefinedInitialDataOptions<
-          Awaited<ReturnType<typeof residentsControllerFindOne>>,
-          TError,
-          Awaited<ReturnType<typeof residentsControllerFindOne>>
-        > , 'initialData'
-      >, }
-
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useResidentsControllerFindOne<TData = Awaited<ReturnType<typeof residentsControllerFindOne>>, TError = unknown>(
- tenantUid: string,
-    uid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof residentsControllerFindOne>>, TError, TData>>, }
-
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-/**
- * @summary 利用者の詳細を取得
- */
-
-export function useResidentsControllerFindOne<TData = Awaited<ReturnType<typeof residentsControllerFindOne>>, TError = unknown>(
- tenantUid: string,
-    uid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof residentsControllerFindOne>>, TError, TData>>, }
-
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
-
-  const queryOptions = getResidentsControllerFindOneQueryOptions(tenantUid,uid,options)
-
-  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
-
-  return query;
-}
-
-
-
-
-/**
  * @summary 利用者の食事記録一覧を取得
  */
-export const foodRecordsControllerFindByResident = (
+export const getFoodRecords = (
     residentUid: string,
  signal?: AbortSignal
 ) => {
@@ -1954,67 +1954,67 @@ export const foodRecordsControllerFindByResident = (
     }
   
 
-export const getFoodRecordsControllerFindByResidentQueryKey = (residentUid: string,) => {
+export const getGetFoodRecordsQueryKey = (residentUid: string,) => {
     return [`/residents/${residentUid}/food-records`] as const;
     }
 
     
-export const getFoodRecordsControllerFindByResidentQueryOptions = <TData = Awaited<ReturnType<typeof foodRecordsControllerFindByResident>>, TError = unknown>(residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof foodRecordsControllerFindByResident>>, TError, TData>>, }
+export const getGetFoodRecordsQueryOptions = <TData = Awaited<ReturnType<typeof getFoodRecords>>, TError = unknown>(residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getFoodRecords>>, TError, TData>>, }
 ) => {
 
 const {query: queryOptions} = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getFoodRecordsControllerFindByResidentQueryKey(residentUid);
+  const queryKey =  queryOptions?.queryKey ?? getGetFoodRecordsQueryKey(residentUid);
 
   
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof foodRecordsControllerFindByResident>>> = ({ signal }) => foodRecordsControllerFindByResident(residentUid, signal);
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getFoodRecords>>> = ({ signal }) => getFoodRecords(residentUid, signal);
 
       
 
       
 
-   return  { queryKey, queryFn, enabled: !!(residentUid), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof foodRecordsControllerFindByResident>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
+   return  { queryKey, queryFn, enabled: !!(residentUid), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getFoodRecords>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
 }
 
-export type FoodRecordsControllerFindByResidentQueryResult = NonNullable<Awaited<ReturnType<typeof foodRecordsControllerFindByResident>>>
-export type FoodRecordsControllerFindByResidentQueryError = unknown
+export type GetFoodRecordsQueryResult = NonNullable<Awaited<ReturnType<typeof getFoodRecords>>>
+export type GetFoodRecordsQueryError = unknown
 
 
-export function useFoodRecordsControllerFindByResident<TData = Awaited<ReturnType<typeof foodRecordsControllerFindByResident>>, TError = unknown>(
- residentUid: string, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof foodRecordsControllerFindByResident>>, TError, TData>> & Pick<
+export function useGetFoodRecords<TData = Awaited<ReturnType<typeof getFoodRecords>>, TError = unknown>(
+ residentUid: string, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getFoodRecords>>, TError, TData>> & Pick<
         DefinedInitialDataOptions<
-          Awaited<ReturnType<typeof foodRecordsControllerFindByResident>>,
+          Awaited<ReturnType<typeof getFoodRecords>>,
           TError,
-          Awaited<ReturnType<typeof foodRecordsControllerFindByResident>>
+          Awaited<ReturnType<typeof getFoodRecords>>
         > , 'initialData'
       >, }
 
   ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useFoodRecordsControllerFindByResident<TData = Awaited<ReturnType<typeof foodRecordsControllerFindByResident>>, TError = unknown>(
- residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof foodRecordsControllerFindByResident>>, TError, TData>> & Pick<
+export function useGetFoodRecords<TData = Awaited<ReturnType<typeof getFoodRecords>>, TError = unknown>(
+ residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getFoodRecords>>, TError, TData>> & Pick<
         UndefinedInitialDataOptions<
-          Awaited<ReturnType<typeof foodRecordsControllerFindByResident>>,
+          Awaited<ReturnType<typeof getFoodRecords>>,
           TError,
-          Awaited<ReturnType<typeof foodRecordsControllerFindByResident>>
+          Awaited<ReturnType<typeof getFoodRecords>>
         > , 'initialData'
       >, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useFoodRecordsControllerFindByResident<TData = Awaited<ReturnType<typeof foodRecordsControllerFindByResident>>, TError = unknown>(
- residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof foodRecordsControllerFindByResident>>, TError, TData>>, }
+export function useGetFoodRecords<TData = Awaited<ReturnType<typeof getFoodRecords>>, TError = unknown>(
+ residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getFoodRecords>>, TError, TData>>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
 /**
  * @summary 利用者の食事記録一覧を取得
  */
 
-export function useFoodRecordsControllerFindByResident<TData = Awaited<ReturnType<typeof foodRecordsControllerFindByResident>>, TError = unknown>(
- residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof foodRecordsControllerFindByResident>>, TError, TData>>, }
+export function useGetFoodRecords<TData = Awaited<ReturnType<typeof getFoodRecords>>, TError = unknown>(
+ residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getFoodRecords>>, TError, TData>>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
 
-  const queryOptions = getFoodRecordsControllerFindByResidentQueryOptions(residentUid,options)
+  const queryOptions = getGetFoodRecordsQueryOptions(residentUid,options)
 
   const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
 
@@ -2029,7 +2029,7 @@ export function useFoodRecordsControllerFindByResident<TData = Awaited<ReturnTyp
 /**
  * @summary 食事記録を作成
  */
-export const foodRecordsControllerCreate = (
+export const createFoodRecord = (
     residentUid: string,
     foodRecordCreateInputDto: FoodRecordCreateInputDto,
  signal?: AbortSignal
@@ -2046,11 +2046,11 @@ export const foodRecordsControllerCreate = (
   
 
 
-export const getFoodRecordsControllerCreateMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof foodRecordsControllerCreate>>, TError,{residentUid: string;data: FoodRecordCreateInputDto}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof foodRecordsControllerCreate>>, TError,{residentUid: string;data: FoodRecordCreateInputDto}, TContext> => {
+export const getCreateFoodRecordMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createFoodRecord>>, TError,{residentUid: string;data: FoodRecordCreateInputDto}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof createFoodRecord>>, TError,{residentUid: string;data: FoodRecordCreateInputDto}, TContext> => {
     
-const mutationKey = ['foodRecordsControllerCreate'];
+const mutationKey = ['createFoodRecord'];
 const {mutation: mutationOptions} = options ?
       options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
       options
@@ -2060,10 +2060,10 @@ const {mutation: mutationOptions} = options ?
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof foodRecordsControllerCreate>>, {residentUid: string;data: FoodRecordCreateInputDto}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof createFoodRecord>>, {residentUid: string;data: FoodRecordCreateInputDto}> = (props) => {
           const {residentUid,data} = props ?? {};
 
-          return  foodRecordsControllerCreate(residentUid,data,)
+          return  createFoodRecord(residentUid,data,)
         }
 
         
@@ -2071,23 +2071,23 @@ const {mutation: mutationOptions} = options ?
 
   return  { mutationFn, ...mutationOptions }}
 
-    export type FoodRecordsControllerCreateMutationResult = NonNullable<Awaited<ReturnType<typeof foodRecordsControllerCreate>>>
-    export type FoodRecordsControllerCreateMutationBody = FoodRecordCreateInputDto
-    export type FoodRecordsControllerCreateMutationError = unknown
+    export type CreateFoodRecordMutationResult = NonNullable<Awaited<ReturnType<typeof createFoodRecord>>>
+    export type CreateFoodRecordMutationBody = FoodRecordCreateInputDto
+    export type CreateFoodRecordMutationError = unknown
 
     /**
  * @summary 食事記録を作成
  */
-export const useFoodRecordsControllerCreate = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof foodRecordsControllerCreate>>, TError,{residentUid: string;data: FoodRecordCreateInputDto}, TContext>, }
+export const useCreateFoodRecord = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createFoodRecord>>, TError,{residentUid: string;data: FoodRecordCreateInputDto}, TContext>, }
 ): UseMutationResult<
-        Awaited<ReturnType<typeof foodRecordsControllerCreate>>,
+        Awaited<ReturnType<typeof createFoodRecord>>,
         TError,
         {residentUid: string;data: FoodRecordCreateInputDto},
         TContext
       > => {
 
-      const mutationOptions = getFoodRecordsControllerCreateMutationOptions(options);
+      const mutationOptions = getCreateFoodRecordMutationOptions(options);
 
       return useMutation(mutationOptions);
     }
@@ -2095,7 +2095,7 @@ export const useFoodRecordsControllerCreate = <TError = unknown,
 /**
  * @summary 食事記録を更新
  */
-export const foodRecordsControllerUpdate = (
+export const updateFoodRecord = (
     residentUid: unknown,
     uid: string,
     foodRecordUpdateInputDto: FoodRecordUpdateInputDto,
@@ -2112,11 +2112,11 @@ export const foodRecordsControllerUpdate = (
   
 
 
-export const getFoodRecordsControllerUpdateMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof foodRecordsControllerUpdate>>, TError,{residentUid: unknown;uid: string;data: FoodRecordUpdateInputDto}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof foodRecordsControllerUpdate>>, TError,{residentUid: unknown;uid: string;data: FoodRecordUpdateInputDto}, TContext> => {
+export const getUpdateFoodRecordMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateFoodRecord>>, TError,{residentUid: unknown;uid: string;data: FoodRecordUpdateInputDto}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof updateFoodRecord>>, TError,{residentUid: unknown;uid: string;data: FoodRecordUpdateInputDto}, TContext> => {
     
-const mutationKey = ['foodRecordsControllerUpdate'];
+const mutationKey = ['updateFoodRecord'];
 const {mutation: mutationOptions} = options ?
       options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
       options
@@ -2126,10 +2126,10 @@ const {mutation: mutationOptions} = options ?
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof foodRecordsControllerUpdate>>, {residentUid: unknown;uid: string;data: FoodRecordUpdateInputDto}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof updateFoodRecord>>, {residentUid: unknown;uid: string;data: FoodRecordUpdateInputDto}> = (props) => {
           const {residentUid,uid,data} = props ?? {};
 
-          return  foodRecordsControllerUpdate(residentUid,uid,data,)
+          return  updateFoodRecord(residentUid,uid,data,)
         }
 
         
@@ -2137,23 +2137,23 @@ const {mutation: mutationOptions} = options ?
 
   return  { mutationFn, ...mutationOptions }}
 
-    export type FoodRecordsControllerUpdateMutationResult = NonNullable<Awaited<ReturnType<typeof foodRecordsControllerUpdate>>>
-    export type FoodRecordsControllerUpdateMutationBody = FoodRecordUpdateInputDto
-    export type FoodRecordsControllerUpdateMutationError = unknown
+    export type UpdateFoodRecordMutationResult = NonNullable<Awaited<ReturnType<typeof updateFoodRecord>>>
+    export type UpdateFoodRecordMutationBody = FoodRecordUpdateInputDto
+    export type UpdateFoodRecordMutationError = unknown
 
     /**
  * @summary 食事記録を更新
  */
-export const useFoodRecordsControllerUpdate = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof foodRecordsControllerUpdate>>, TError,{residentUid: unknown;uid: string;data: FoodRecordUpdateInputDto}, TContext>, }
+export const useUpdateFoodRecord = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateFoodRecord>>, TError,{residentUid: unknown;uid: string;data: FoodRecordUpdateInputDto}, TContext>, }
 ): UseMutationResult<
-        Awaited<ReturnType<typeof foodRecordsControllerUpdate>>,
+        Awaited<ReturnType<typeof updateFoodRecord>>,
         TError,
         {residentUid: unknown;uid: string;data: FoodRecordUpdateInputDto},
         TContext
       > => {
 
-      const mutationOptions = getFoodRecordsControllerUpdateMutationOptions(options);
+      const mutationOptions = getUpdateFoodRecordMutationOptions(options);
 
       return useMutation(mutationOptions);
     }
@@ -2161,7 +2161,7 @@ export const useFoodRecordsControllerUpdate = <TError = unknown,
 /**
  * @summary 食事記録を削除
  */
-export const foodRecordsControllerDelete = (
+export const deleteFoodRecord = (
     residentUid: unknown,
     uid: string,
  ) => {
@@ -2175,11 +2175,11 @@ export const foodRecordsControllerDelete = (
   
 
 
-export const getFoodRecordsControllerDeleteMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof foodRecordsControllerDelete>>, TError,{residentUid: unknown;uid: string}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof foodRecordsControllerDelete>>, TError,{residentUid: unknown;uid: string}, TContext> => {
+export const getDeleteFoodRecordMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteFoodRecord>>, TError,{residentUid: unknown;uid: string}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof deleteFoodRecord>>, TError,{residentUid: unknown;uid: string}, TContext> => {
     
-const mutationKey = ['foodRecordsControllerDelete'];
+const mutationKey = ['deleteFoodRecord'];
 const {mutation: mutationOptions} = options ?
       options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
       options
@@ -2189,10 +2189,10 @@ const {mutation: mutationOptions} = options ?
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof foodRecordsControllerDelete>>, {residentUid: unknown;uid: string}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof deleteFoodRecord>>, {residentUid: unknown;uid: string}> = (props) => {
           const {residentUid,uid} = props ?? {};
 
-          return  foodRecordsControllerDelete(residentUid,uid,)
+          return  deleteFoodRecord(residentUid,uid,)
         }
 
         
@@ -2200,23 +2200,23 @@ const {mutation: mutationOptions} = options ?
 
   return  { mutationFn, ...mutationOptions }}
 
-    export type FoodRecordsControllerDeleteMutationResult = NonNullable<Awaited<ReturnType<typeof foodRecordsControllerDelete>>>
+    export type DeleteFoodRecordMutationResult = NonNullable<Awaited<ReturnType<typeof deleteFoodRecord>>>
     
-    export type FoodRecordsControllerDeleteMutationError = unknown
+    export type DeleteFoodRecordMutationError = unknown
 
     /**
  * @summary 食事記録を削除
  */
-export const useFoodRecordsControllerDelete = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof foodRecordsControllerDelete>>, TError,{residentUid: unknown;uid: string}, TContext>, }
+export const useDeleteFoodRecord = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteFoodRecord>>, TError,{residentUid: unknown;uid: string}, TContext>, }
 ): UseMutationResult<
-        Awaited<ReturnType<typeof foodRecordsControllerDelete>>,
+        Awaited<ReturnType<typeof deleteFoodRecord>>,
         TError,
         {residentUid: unknown;uid: string},
         TContext
       > => {
 
-      const mutationOptions = getFoodRecordsControllerDeleteMutationOptions(options);
+      const mutationOptions = getDeleteFoodRecordMutationOptions(options);
 
       return useMutation(mutationOptions);
     }
@@ -2224,7 +2224,7 @@ export const useFoodRecordsControllerDelete = <TError = unknown,
 /**
  * @summary 利用者の入浴記録一覧を取得
  */
-export const bathRecordsControllerFindByResident = (
+export const getBathRecords = (
     residentUid: string,
  signal?: AbortSignal
 ) => {
@@ -2237,67 +2237,67 @@ export const bathRecordsControllerFindByResident = (
     }
   
 
-export const getBathRecordsControllerFindByResidentQueryKey = (residentUid: string,) => {
+export const getGetBathRecordsQueryKey = (residentUid: string,) => {
     return [`/residents/${residentUid}/bath-records`] as const;
     }
 
     
-export const getBathRecordsControllerFindByResidentQueryOptions = <TData = Awaited<ReturnType<typeof bathRecordsControllerFindByResident>>, TError = unknown>(residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof bathRecordsControllerFindByResident>>, TError, TData>>, }
+export const getGetBathRecordsQueryOptions = <TData = Awaited<ReturnType<typeof getBathRecords>>, TError = unknown>(residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getBathRecords>>, TError, TData>>, }
 ) => {
 
 const {query: queryOptions} = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getBathRecordsControllerFindByResidentQueryKey(residentUid);
+  const queryKey =  queryOptions?.queryKey ?? getGetBathRecordsQueryKey(residentUid);
 
   
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof bathRecordsControllerFindByResident>>> = ({ signal }) => bathRecordsControllerFindByResident(residentUid, signal);
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getBathRecords>>> = ({ signal }) => getBathRecords(residentUid, signal);
 
       
 
       
 
-   return  { queryKey, queryFn, enabled: !!(residentUid), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof bathRecordsControllerFindByResident>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
+   return  { queryKey, queryFn, enabled: !!(residentUid), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getBathRecords>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
 }
 
-export type BathRecordsControllerFindByResidentQueryResult = NonNullable<Awaited<ReturnType<typeof bathRecordsControllerFindByResident>>>
-export type BathRecordsControllerFindByResidentQueryError = unknown
+export type GetBathRecordsQueryResult = NonNullable<Awaited<ReturnType<typeof getBathRecords>>>
+export type GetBathRecordsQueryError = unknown
 
 
-export function useBathRecordsControllerFindByResident<TData = Awaited<ReturnType<typeof bathRecordsControllerFindByResident>>, TError = unknown>(
- residentUid: string, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof bathRecordsControllerFindByResident>>, TError, TData>> & Pick<
+export function useGetBathRecords<TData = Awaited<ReturnType<typeof getBathRecords>>, TError = unknown>(
+ residentUid: string, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getBathRecords>>, TError, TData>> & Pick<
         DefinedInitialDataOptions<
-          Awaited<ReturnType<typeof bathRecordsControllerFindByResident>>,
+          Awaited<ReturnType<typeof getBathRecords>>,
           TError,
-          Awaited<ReturnType<typeof bathRecordsControllerFindByResident>>
+          Awaited<ReturnType<typeof getBathRecords>>
         > , 'initialData'
       >, }
 
   ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useBathRecordsControllerFindByResident<TData = Awaited<ReturnType<typeof bathRecordsControllerFindByResident>>, TError = unknown>(
- residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof bathRecordsControllerFindByResident>>, TError, TData>> & Pick<
+export function useGetBathRecords<TData = Awaited<ReturnType<typeof getBathRecords>>, TError = unknown>(
+ residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getBathRecords>>, TError, TData>> & Pick<
         UndefinedInitialDataOptions<
-          Awaited<ReturnType<typeof bathRecordsControllerFindByResident>>,
+          Awaited<ReturnType<typeof getBathRecords>>,
           TError,
-          Awaited<ReturnType<typeof bathRecordsControllerFindByResident>>
+          Awaited<ReturnType<typeof getBathRecords>>
         > , 'initialData'
       >, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useBathRecordsControllerFindByResident<TData = Awaited<ReturnType<typeof bathRecordsControllerFindByResident>>, TError = unknown>(
- residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof bathRecordsControllerFindByResident>>, TError, TData>>, }
+export function useGetBathRecords<TData = Awaited<ReturnType<typeof getBathRecords>>, TError = unknown>(
+ residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getBathRecords>>, TError, TData>>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
 /**
  * @summary 利用者の入浴記録一覧を取得
  */
 
-export function useBathRecordsControllerFindByResident<TData = Awaited<ReturnType<typeof bathRecordsControllerFindByResident>>, TError = unknown>(
- residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof bathRecordsControllerFindByResident>>, TError, TData>>, }
+export function useGetBathRecords<TData = Awaited<ReturnType<typeof getBathRecords>>, TError = unknown>(
+ residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getBathRecords>>, TError, TData>>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
 
-  const queryOptions = getBathRecordsControllerFindByResidentQueryOptions(residentUid,options)
+  const queryOptions = getGetBathRecordsQueryOptions(residentUid,options)
 
   const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
 
@@ -2312,7 +2312,7 @@ export function useBathRecordsControllerFindByResident<TData = Awaited<ReturnTyp
 /**
  * @summary 入浴記録を作成
  */
-export const bathRecordsControllerCreate = (
+export const createBathRecord = (
     residentUid: string,
     bathRecordCreateInputDto: BathRecordCreateInputDto,
  signal?: AbortSignal
@@ -2329,11 +2329,11 @@ export const bathRecordsControllerCreate = (
   
 
 
-export const getBathRecordsControllerCreateMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof bathRecordsControllerCreate>>, TError,{residentUid: string;data: BathRecordCreateInputDto}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof bathRecordsControllerCreate>>, TError,{residentUid: string;data: BathRecordCreateInputDto}, TContext> => {
+export const getCreateBathRecordMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createBathRecord>>, TError,{residentUid: string;data: BathRecordCreateInputDto}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof createBathRecord>>, TError,{residentUid: string;data: BathRecordCreateInputDto}, TContext> => {
     
-const mutationKey = ['bathRecordsControllerCreate'];
+const mutationKey = ['createBathRecord'];
 const {mutation: mutationOptions} = options ?
       options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
       options
@@ -2343,10 +2343,10 @@ const {mutation: mutationOptions} = options ?
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof bathRecordsControllerCreate>>, {residentUid: string;data: BathRecordCreateInputDto}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof createBathRecord>>, {residentUid: string;data: BathRecordCreateInputDto}> = (props) => {
           const {residentUid,data} = props ?? {};
 
-          return  bathRecordsControllerCreate(residentUid,data,)
+          return  createBathRecord(residentUid,data,)
         }
 
         
@@ -2354,23 +2354,23 @@ const {mutation: mutationOptions} = options ?
 
   return  { mutationFn, ...mutationOptions }}
 
-    export type BathRecordsControllerCreateMutationResult = NonNullable<Awaited<ReturnType<typeof bathRecordsControllerCreate>>>
-    export type BathRecordsControllerCreateMutationBody = BathRecordCreateInputDto
-    export type BathRecordsControllerCreateMutationError = unknown
+    export type CreateBathRecordMutationResult = NonNullable<Awaited<ReturnType<typeof createBathRecord>>>
+    export type CreateBathRecordMutationBody = BathRecordCreateInputDto
+    export type CreateBathRecordMutationError = unknown
 
     /**
  * @summary 入浴記録を作成
  */
-export const useBathRecordsControllerCreate = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof bathRecordsControllerCreate>>, TError,{residentUid: string;data: BathRecordCreateInputDto}, TContext>, }
+export const useCreateBathRecord = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createBathRecord>>, TError,{residentUid: string;data: BathRecordCreateInputDto}, TContext>, }
 ): UseMutationResult<
-        Awaited<ReturnType<typeof bathRecordsControllerCreate>>,
+        Awaited<ReturnType<typeof createBathRecord>>,
         TError,
         {residentUid: string;data: BathRecordCreateInputDto},
         TContext
       > => {
 
-      const mutationOptions = getBathRecordsControllerCreateMutationOptions(options);
+      const mutationOptions = getCreateBathRecordMutationOptions(options);
 
       return useMutation(mutationOptions);
     }
@@ -2378,7 +2378,7 @@ export const useBathRecordsControllerCreate = <TError = unknown,
 /**
  * @summary 入浴記録を更新
  */
-export const bathRecordsControllerUpdate = (
+export const updateBathRecord = (
     residentUid: unknown,
     uid: string,
     bathRecordUpdateInputDto: BathRecordUpdateInputDto,
@@ -2395,11 +2395,11 @@ export const bathRecordsControllerUpdate = (
   
 
 
-export const getBathRecordsControllerUpdateMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof bathRecordsControllerUpdate>>, TError,{residentUid: unknown;uid: string;data: BathRecordUpdateInputDto}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof bathRecordsControllerUpdate>>, TError,{residentUid: unknown;uid: string;data: BathRecordUpdateInputDto}, TContext> => {
+export const getUpdateBathRecordMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateBathRecord>>, TError,{residentUid: unknown;uid: string;data: BathRecordUpdateInputDto}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof updateBathRecord>>, TError,{residentUid: unknown;uid: string;data: BathRecordUpdateInputDto}, TContext> => {
     
-const mutationKey = ['bathRecordsControllerUpdate'];
+const mutationKey = ['updateBathRecord'];
 const {mutation: mutationOptions} = options ?
       options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
       options
@@ -2409,10 +2409,10 @@ const {mutation: mutationOptions} = options ?
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof bathRecordsControllerUpdate>>, {residentUid: unknown;uid: string;data: BathRecordUpdateInputDto}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof updateBathRecord>>, {residentUid: unknown;uid: string;data: BathRecordUpdateInputDto}> = (props) => {
           const {residentUid,uid,data} = props ?? {};
 
-          return  bathRecordsControllerUpdate(residentUid,uid,data,)
+          return  updateBathRecord(residentUid,uid,data,)
         }
 
         
@@ -2420,23 +2420,23 @@ const {mutation: mutationOptions} = options ?
 
   return  { mutationFn, ...mutationOptions }}
 
-    export type BathRecordsControllerUpdateMutationResult = NonNullable<Awaited<ReturnType<typeof bathRecordsControllerUpdate>>>
-    export type BathRecordsControllerUpdateMutationBody = BathRecordUpdateInputDto
-    export type BathRecordsControllerUpdateMutationError = unknown
+    export type UpdateBathRecordMutationResult = NonNullable<Awaited<ReturnType<typeof updateBathRecord>>>
+    export type UpdateBathRecordMutationBody = BathRecordUpdateInputDto
+    export type UpdateBathRecordMutationError = unknown
 
     /**
  * @summary 入浴記録を更新
  */
-export const useBathRecordsControllerUpdate = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof bathRecordsControllerUpdate>>, TError,{residentUid: unknown;uid: string;data: BathRecordUpdateInputDto}, TContext>, }
+export const useUpdateBathRecord = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateBathRecord>>, TError,{residentUid: unknown;uid: string;data: BathRecordUpdateInputDto}, TContext>, }
 ): UseMutationResult<
-        Awaited<ReturnType<typeof bathRecordsControllerUpdate>>,
+        Awaited<ReturnType<typeof updateBathRecord>>,
         TError,
         {residentUid: unknown;uid: string;data: BathRecordUpdateInputDto},
         TContext
       > => {
 
-      const mutationOptions = getBathRecordsControllerUpdateMutationOptions(options);
+      const mutationOptions = getUpdateBathRecordMutationOptions(options);
 
       return useMutation(mutationOptions);
     }
@@ -2444,7 +2444,7 @@ export const useBathRecordsControllerUpdate = <TError = unknown,
 /**
  * @summary 入浴記録を削除
  */
-export const bathRecordsControllerDelete = (
+export const deleteBathRecord = (
     residentUid: unknown,
     uid: string,
  ) => {
@@ -2458,11 +2458,11 @@ export const bathRecordsControllerDelete = (
   
 
 
-export const getBathRecordsControllerDeleteMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof bathRecordsControllerDelete>>, TError,{residentUid: unknown;uid: string}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof bathRecordsControllerDelete>>, TError,{residentUid: unknown;uid: string}, TContext> => {
+export const getDeleteBathRecordMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteBathRecord>>, TError,{residentUid: unknown;uid: string}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof deleteBathRecord>>, TError,{residentUid: unknown;uid: string}, TContext> => {
     
-const mutationKey = ['bathRecordsControllerDelete'];
+const mutationKey = ['deleteBathRecord'];
 const {mutation: mutationOptions} = options ?
       options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
       options
@@ -2472,10 +2472,10 @@ const {mutation: mutationOptions} = options ?
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof bathRecordsControllerDelete>>, {residentUid: unknown;uid: string}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof deleteBathRecord>>, {residentUid: unknown;uid: string}> = (props) => {
           const {residentUid,uid} = props ?? {};
 
-          return  bathRecordsControllerDelete(residentUid,uid,)
+          return  deleteBathRecord(residentUid,uid,)
         }
 
         
@@ -2483,23 +2483,23 @@ const {mutation: mutationOptions} = options ?
 
   return  { mutationFn, ...mutationOptions }}
 
-    export type BathRecordsControllerDeleteMutationResult = NonNullable<Awaited<ReturnType<typeof bathRecordsControllerDelete>>>
+    export type DeleteBathRecordMutationResult = NonNullable<Awaited<ReturnType<typeof deleteBathRecord>>>
     
-    export type BathRecordsControllerDeleteMutationError = unknown
+    export type DeleteBathRecordMutationError = unknown
 
     /**
  * @summary 入浴記録を削除
  */
-export const useBathRecordsControllerDelete = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof bathRecordsControllerDelete>>, TError,{residentUid: unknown;uid: string}, TContext>, }
+export const useDeleteBathRecord = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteBathRecord>>, TError,{residentUid: unknown;uid: string}, TContext>, }
 ): UseMutationResult<
-        Awaited<ReturnType<typeof bathRecordsControllerDelete>>,
+        Awaited<ReturnType<typeof deleteBathRecord>>,
         TError,
         {residentUid: unknown;uid: string},
         TContext
       > => {
 
-      const mutationOptions = getBathRecordsControllerDeleteMutationOptions(options);
+      const mutationOptions = getDeleteBathRecordMutationOptions(options);
 
       return useMutation(mutationOptions);
     }
@@ -2507,7 +2507,7 @@ export const useBathRecordsControllerDelete = <TError = unknown,
 /**
  * @summary 利用者の排泄記録一覧を取得
  */
-export const eliminationRecordsControllerFindByResident = (
+export const getEliminationRecords = (
     residentUid: string,
  signal?: AbortSignal
 ) => {
@@ -2520,67 +2520,67 @@ export const eliminationRecordsControllerFindByResident = (
     }
   
 
-export const getEliminationRecordsControllerFindByResidentQueryKey = (residentUid: string,) => {
+export const getGetEliminationRecordsQueryKey = (residentUid: string,) => {
     return [`/residents/${residentUid}/elimination-records`] as const;
     }
 
     
-export const getEliminationRecordsControllerFindByResidentQueryOptions = <TData = Awaited<ReturnType<typeof eliminationRecordsControllerFindByResident>>, TError = unknown>(residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof eliminationRecordsControllerFindByResident>>, TError, TData>>, }
+export const getGetEliminationRecordsQueryOptions = <TData = Awaited<ReturnType<typeof getEliminationRecords>>, TError = unknown>(residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getEliminationRecords>>, TError, TData>>, }
 ) => {
 
 const {query: queryOptions} = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getEliminationRecordsControllerFindByResidentQueryKey(residentUid);
+  const queryKey =  queryOptions?.queryKey ?? getGetEliminationRecordsQueryKey(residentUid);
 
   
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof eliminationRecordsControllerFindByResident>>> = ({ signal }) => eliminationRecordsControllerFindByResident(residentUid, signal);
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getEliminationRecords>>> = ({ signal }) => getEliminationRecords(residentUid, signal);
 
       
 
       
 
-   return  { queryKey, queryFn, enabled: !!(residentUid), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof eliminationRecordsControllerFindByResident>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
+   return  { queryKey, queryFn, enabled: !!(residentUid), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getEliminationRecords>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
 }
 
-export type EliminationRecordsControllerFindByResidentQueryResult = NonNullable<Awaited<ReturnType<typeof eliminationRecordsControllerFindByResident>>>
-export type EliminationRecordsControllerFindByResidentQueryError = unknown
+export type GetEliminationRecordsQueryResult = NonNullable<Awaited<ReturnType<typeof getEliminationRecords>>>
+export type GetEliminationRecordsQueryError = unknown
 
 
-export function useEliminationRecordsControllerFindByResident<TData = Awaited<ReturnType<typeof eliminationRecordsControllerFindByResident>>, TError = unknown>(
- residentUid: string, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof eliminationRecordsControllerFindByResident>>, TError, TData>> & Pick<
+export function useGetEliminationRecords<TData = Awaited<ReturnType<typeof getEliminationRecords>>, TError = unknown>(
+ residentUid: string, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getEliminationRecords>>, TError, TData>> & Pick<
         DefinedInitialDataOptions<
-          Awaited<ReturnType<typeof eliminationRecordsControllerFindByResident>>,
+          Awaited<ReturnType<typeof getEliminationRecords>>,
           TError,
-          Awaited<ReturnType<typeof eliminationRecordsControllerFindByResident>>
+          Awaited<ReturnType<typeof getEliminationRecords>>
         > , 'initialData'
       >, }
 
   ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useEliminationRecordsControllerFindByResident<TData = Awaited<ReturnType<typeof eliminationRecordsControllerFindByResident>>, TError = unknown>(
- residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof eliminationRecordsControllerFindByResident>>, TError, TData>> & Pick<
+export function useGetEliminationRecords<TData = Awaited<ReturnType<typeof getEliminationRecords>>, TError = unknown>(
+ residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getEliminationRecords>>, TError, TData>> & Pick<
         UndefinedInitialDataOptions<
-          Awaited<ReturnType<typeof eliminationRecordsControllerFindByResident>>,
+          Awaited<ReturnType<typeof getEliminationRecords>>,
           TError,
-          Awaited<ReturnType<typeof eliminationRecordsControllerFindByResident>>
+          Awaited<ReturnType<typeof getEliminationRecords>>
         > , 'initialData'
       >, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useEliminationRecordsControllerFindByResident<TData = Awaited<ReturnType<typeof eliminationRecordsControllerFindByResident>>, TError = unknown>(
- residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof eliminationRecordsControllerFindByResident>>, TError, TData>>, }
+export function useGetEliminationRecords<TData = Awaited<ReturnType<typeof getEliminationRecords>>, TError = unknown>(
+ residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getEliminationRecords>>, TError, TData>>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
 /**
  * @summary 利用者の排泄記録一覧を取得
  */
 
-export function useEliminationRecordsControllerFindByResident<TData = Awaited<ReturnType<typeof eliminationRecordsControllerFindByResident>>, TError = unknown>(
- residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof eliminationRecordsControllerFindByResident>>, TError, TData>>, }
+export function useGetEliminationRecords<TData = Awaited<ReturnType<typeof getEliminationRecords>>, TError = unknown>(
+ residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getEliminationRecords>>, TError, TData>>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
 
-  const queryOptions = getEliminationRecordsControllerFindByResidentQueryOptions(residentUid,options)
+  const queryOptions = getGetEliminationRecordsQueryOptions(residentUid,options)
 
   const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
 
@@ -2595,7 +2595,7 @@ export function useEliminationRecordsControllerFindByResident<TData = Awaited<Re
 /**
  * @summary 排泄記録を作成
  */
-export const eliminationRecordsControllerCreate = (
+export const createEliminationRecord = (
     residentUid: string,
     eliminationRecordCreateInputDto: EliminationRecordCreateInputDto,
  signal?: AbortSignal
@@ -2612,11 +2612,11 @@ export const eliminationRecordsControllerCreate = (
   
 
 
-export const getEliminationRecordsControllerCreateMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof eliminationRecordsControllerCreate>>, TError,{residentUid: string;data: EliminationRecordCreateInputDto}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof eliminationRecordsControllerCreate>>, TError,{residentUid: string;data: EliminationRecordCreateInputDto}, TContext> => {
+export const getCreateEliminationRecordMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createEliminationRecord>>, TError,{residentUid: string;data: EliminationRecordCreateInputDto}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof createEliminationRecord>>, TError,{residentUid: string;data: EliminationRecordCreateInputDto}, TContext> => {
     
-const mutationKey = ['eliminationRecordsControllerCreate'];
+const mutationKey = ['createEliminationRecord'];
 const {mutation: mutationOptions} = options ?
       options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
       options
@@ -2626,10 +2626,10 @@ const {mutation: mutationOptions} = options ?
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof eliminationRecordsControllerCreate>>, {residentUid: string;data: EliminationRecordCreateInputDto}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof createEliminationRecord>>, {residentUid: string;data: EliminationRecordCreateInputDto}> = (props) => {
           const {residentUid,data} = props ?? {};
 
-          return  eliminationRecordsControllerCreate(residentUid,data,)
+          return  createEliminationRecord(residentUid,data,)
         }
 
         
@@ -2637,23 +2637,23 @@ const {mutation: mutationOptions} = options ?
 
   return  { mutationFn, ...mutationOptions }}
 
-    export type EliminationRecordsControllerCreateMutationResult = NonNullable<Awaited<ReturnType<typeof eliminationRecordsControllerCreate>>>
-    export type EliminationRecordsControllerCreateMutationBody = EliminationRecordCreateInputDto
-    export type EliminationRecordsControllerCreateMutationError = unknown
+    export type CreateEliminationRecordMutationResult = NonNullable<Awaited<ReturnType<typeof createEliminationRecord>>>
+    export type CreateEliminationRecordMutationBody = EliminationRecordCreateInputDto
+    export type CreateEliminationRecordMutationError = unknown
 
     /**
  * @summary 排泄記録を作成
  */
-export const useEliminationRecordsControllerCreate = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof eliminationRecordsControllerCreate>>, TError,{residentUid: string;data: EliminationRecordCreateInputDto}, TContext>, }
+export const useCreateEliminationRecord = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createEliminationRecord>>, TError,{residentUid: string;data: EliminationRecordCreateInputDto}, TContext>, }
 ): UseMutationResult<
-        Awaited<ReturnType<typeof eliminationRecordsControllerCreate>>,
+        Awaited<ReturnType<typeof createEliminationRecord>>,
         TError,
         {residentUid: string;data: EliminationRecordCreateInputDto},
         TContext
       > => {
 
-      const mutationOptions = getEliminationRecordsControllerCreateMutationOptions(options);
+      const mutationOptions = getCreateEliminationRecordMutationOptions(options);
 
       return useMutation(mutationOptions);
     }
@@ -2661,7 +2661,7 @@ export const useEliminationRecordsControllerCreate = <TError = unknown,
 /**
  * @summary 排泄記録を更新
  */
-export const eliminationRecordsControllerUpdate = (
+export const updateEliminationRecord = (
     residentUid: unknown,
     uid: string,
     eliminationRecordUpdateInputDto: EliminationRecordUpdateInputDto,
@@ -2678,11 +2678,11 @@ export const eliminationRecordsControllerUpdate = (
   
 
 
-export const getEliminationRecordsControllerUpdateMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof eliminationRecordsControllerUpdate>>, TError,{residentUid: unknown;uid: string;data: EliminationRecordUpdateInputDto}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof eliminationRecordsControllerUpdate>>, TError,{residentUid: unknown;uid: string;data: EliminationRecordUpdateInputDto}, TContext> => {
+export const getUpdateEliminationRecordMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateEliminationRecord>>, TError,{residentUid: unknown;uid: string;data: EliminationRecordUpdateInputDto}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof updateEliminationRecord>>, TError,{residentUid: unknown;uid: string;data: EliminationRecordUpdateInputDto}, TContext> => {
     
-const mutationKey = ['eliminationRecordsControllerUpdate'];
+const mutationKey = ['updateEliminationRecord'];
 const {mutation: mutationOptions} = options ?
       options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
       options
@@ -2692,10 +2692,10 @@ const {mutation: mutationOptions} = options ?
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof eliminationRecordsControllerUpdate>>, {residentUid: unknown;uid: string;data: EliminationRecordUpdateInputDto}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof updateEliminationRecord>>, {residentUid: unknown;uid: string;data: EliminationRecordUpdateInputDto}> = (props) => {
           const {residentUid,uid,data} = props ?? {};
 
-          return  eliminationRecordsControllerUpdate(residentUid,uid,data,)
+          return  updateEliminationRecord(residentUid,uid,data,)
         }
 
         
@@ -2703,23 +2703,23 @@ const {mutation: mutationOptions} = options ?
 
   return  { mutationFn, ...mutationOptions }}
 
-    export type EliminationRecordsControllerUpdateMutationResult = NonNullable<Awaited<ReturnType<typeof eliminationRecordsControllerUpdate>>>
-    export type EliminationRecordsControllerUpdateMutationBody = EliminationRecordUpdateInputDto
-    export type EliminationRecordsControllerUpdateMutationError = unknown
+    export type UpdateEliminationRecordMutationResult = NonNullable<Awaited<ReturnType<typeof updateEliminationRecord>>>
+    export type UpdateEliminationRecordMutationBody = EliminationRecordUpdateInputDto
+    export type UpdateEliminationRecordMutationError = unknown
 
     /**
  * @summary 排泄記録を更新
  */
-export const useEliminationRecordsControllerUpdate = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof eliminationRecordsControllerUpdate>>, TError,{residentUid: unknown;uid: string;data: EliminationRecordUpdateInputDto}, TContext>, }
+export const useUpdateEliminationRecord = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateEliminationRecord>>, TError,{residentUid: unknown;uid: string;data: EliminationRecordUpdateInputDto}, TContext>, }
 ): UseMutationResult<
-        Awaited<ReturnType<typeof eliminationRecordsControllerUpdate>>,
+        Awaited<ReturnType<typeof updateEliminationRecord>>,
         TError,
         {residentUid: unknown;uid: string;data: EliminationRecordUpdateInputDto},
         TContext
       > => {
 
-      const mutationOptions = getEliminationRecordsControllerUpdateMutationOptions(options);
+      const mutationOptions = getUpdateEliminationRecordMutationOptions(options);
 
       return useMutation(mutationOptions);
     }
@@ -2727,7 +2727,7 @@ export const useEliminationRecordsControllerUpdate = <TError = unknown,
 /**
  * @summary 排泄記録を削除
  */
-export const eliminationRecordsControllerDelete = (
+export const deleteEliminationRecord = (
     residentUid: unknown,
     uid: string,
  ) => {
@@ -2741,11 +2741,11 @@ export const eliminationRecordsControllerDelete = (
   
 
 
-export const getEliminationRecordsControllerDeleteMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof eliminationRecordsControllerDelete>>, TError,{residentUid: unknown;uid: string}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof eliminationRecordsControllerDelete>>, TError,{residentUid: unknown;uid: string}, TContext> => {
+export const getDeleteEliminationRecordMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteEliminationRecord>>, TError,{residentUid: unknown;uid: string}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof deleteEliminationRecord>>, TError,{residentUid: unknown;uid: string}, TContext> => {
     
-const mutationKey = ['eliminationRecordsControllerDelete'];
+const mutationKey = ['deleteEliminationRecord'];
 const {mutation: mutationOptions} = options ?
       options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
       options
@@ -2755,10 +2755,10 @@ const {mutation: mutationOptions} = options ?
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof eliminationRecordsControllerDelete>>, {residentUid: unknown;uid: string}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof deleteEliminationRecord>>, {residentUid: unknown;uid: string}> = (props) => {
           const {residentUid,uid} = props ?? {};
 
-          return  eliminationRecordsControllerDelete(residentUid,uid,)
+          return  deleteEliminationRecord(residentUid,uid,)
         }
 
         
@@ -2766,23 +2766,23 @@ const {mutation: mutationOptions} = options ?
 
   return  { mutationFn, ...mutationOptions }}
 
-    export type EliminationRecordsControllerDeleteMutationResult = NonNullable<Awaited<ReturnType<typeof eliminationRecordsControllerDelete>>>
+    export type DeleteEliminationRecordMutationResult = NonNullable<Awaited<ReturnType<typeof deleteEliminationRecord>>>
     
-    export type EliminationRecordsControllerDeleteMutationError = unknown
+    export type DeleteEliminationRecordMutationError = unknown
 
     /**
  * @summary 排泄記録を削除
  */
-export const useEliminationRecordsControllerDelete = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof eliminationRecordsControllerDelete>>, TError,{residentUid: unknown;uid: string}, TContext>, }
+export const useDeleteEliminationRecord = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteEliminationRecord>>, TError,{residentUid: unknown;uid: string}, TContext>, }
 ): UseMutationResult<
-        Awaited<ReturnType<typeof eliminationRecordsControllerDelete>>,
+        Awaited<ReturnType<typeof deleteEliminationRecord>>,
         TError,
         {residentUid: unknown;uid: string},
         TContext
       > => {
 
-      const mutationOptions = getEliminationRecordsControllerDeleteMutationOptions(options);
+      const mutationOptions = getDeleteEliminationRecordMutationOptions(options);
 
       return useMutation(mutationOptions);
     }
@@ -2790,7 +2790,7 @@ export const useEliminationRecordsControllerDelete = <TError = unknown,
 /**
  * @summary 利用者の日常記録一覧を取得
  */
-export const dailyRecordsControllerFindByResident = (
+export const getDailyRecords = (
     residentUid: string,
  signal?: AbortSignal
 ) => {
@@ -2803,67 +2803,67 @@ export const dailyRecordsControllerFindByResident = (
     }
   
 
-export const getDailyRecordsControllerFindByResidentQueryKey = (residentUid: string,) => {
+export const getGetDailyRecordsQueryKey = (residentUid: string,) => {
     return [`/residents/${residentUid}/daily-records`] as const;
     }
 
     
-export const getDailyRecordsControllerFindByResidentQueryOptions = <TData = Awaited<ReturnType<typeof dailyRecordsControllerFindByResident>>, TError = unknown>(residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof dailyRecordsControllerFindByResident>>, TError, TData>>, }
+export const getGetDailyRecordsQueryOptions = <TData = Awaited<ReturnType<typeof getDailyRecords>>, TError = unknown>(residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDailyRecords>>, TError, TData>>, }
 ) => {
 
 const {query: queryOptions} = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getDailyRecordsControllerFindByResidentQueryKey(residentUid);
+  const queryKey =  queryOptions?.queryKey ?? getGetDailyRecordsQueryKey(residentUid);
 
   
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof dailyRecordsControllerFindByResident>>> = ({ signal }) => dailyRecordsControllerFindByResident(residentUid, signal);
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getDailyRecords>>> = ({ signal }) => getDailyRecords(residentUid, signal);
 
       
 
       
 
-   return  { queryKey, queryFn, enabled: !!(residentUid), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof dailyRecordsControllerFindByResident>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
+   return  { queryKey, queryFn, enabled: !!(residentUid), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getDailyRecords>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
 }
 
-export type DailyRecordsControllerFindByResidentQueryResult = NonNullable<Awaited<ReturnType<typeof dailyRecordsControllerFindByResident>>>
-export type DailyRecordsControllerFindByResidentQueryError = unknown
+export type GetDailyRecordsQueryResult = NonNullable<Awaited<ReturnType<typeof getDailyRecords>>>
+export type GetDailyRecordsQueryError = unknown
 
 
-export function useDailyRecordsControllerFindByResident<TData = Awaited<ReturnType<typeof dailyRecordsControllerFindByResident>>, TError = unknown>(
- residentUid: string, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof dailyRecordsControllerFindByResident>>, TError, TData>> & Pick<
+export function useGetDailyRecords<TData = Awaited<ReturnType<typeof getDailyRecords>>, TError = unknown>(
+ residentUid: string, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDailyRecords>>, TError, TData>> & Pick<
         DefinedInitialDataOptions<
-          Awaited<ReturnType<typeof dailyRecordsControllerFindByResident>>,
+          Awaited<ReturnType<typeof getDailyRecords>>,
           TError,
-          Awaited<ReturnType<typeof dailyRecordsControllerFindByResident>>
+          Awaited<ReturnType<typeof getDailyRecords>>
         > , 'initialData'
       >, }
 
   ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useDailyRecordsControllerFindByResident<TData = Awaited<ReturnType<typeof dailyRecordsControllerFindByResident>>, TError = unknown>(
- residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof dailyRecordsControllerFindByResident>>, TError, TData>> & Pick<
+export function useGetDailyRecords<TData = Awaited<ReturnType<typeof getDailyRecords>>, TError = unknown>(
+ residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDailyRecords>>, TError, TData>> & Pick<
         UndefinedInitialDataOptions<
-          Awaited<ReturnType<typeof dailyRecordsControllerFindByResident>>,
+          Awaited<ReturnType<typeof getDailyRecords>>,
           TError,
-          Awaited<ReturnType<typeof dailyRecordsControllerFindByResident>>
+          Awaited<ReturnType<typeof getDailyRecords>>
         > , 'initialData'
       >, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useDailyRecordsControllerFindByResident<TData = Awaited<ReturnType<typeof dailyRecordsControllerFindByResident>>, TError = unknown>(
- residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof dailyRecordsControllerFindByResident>>, TError, TData>>, }
+export function useGetDailyRecords<TData = Awaited<ReturnType<typeof getDailyRecords>>, TError = unknown>(
+ residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDailyRecords>>, TError, TData>>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
 /**
  * @summary 利用者の日常記録一覧を取得
  */
 
-export function useDailyRecordsControllerFindByResident<TData = Awaited<ReturnType<typeof dailyRecordsControllerFindByResident>>, TError = unknown>(
- residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof dailyRecordsControllerFindByResident>>, TError, TData>>, }
+export function useGetDailyRecords<TData = Awaited<ReturnType<typeof getDailyRecords>>, TError = unknown>(
+ residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDailyRecords>>, TError, TData>>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
 
-  const queryOptions = getDailyRecordsControllerFindByResidentQueryOptions(residentUid,options)
+  const queryOptions = getGetDailyRecordsQueryOptions(residentUid,options)
 
   const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
 
@@ -2878,7 +2878,7 @@ export function useDailyRecordsControllerFindByResident<TData = Awaited<ReturnTy
 /**
  * @summary 日常記録を作成
  */
-export const dailyRecordsControllerCreate = (
+export const createDailyRecord = (
     residentUid: string,
     dailyRecordCreateInputDto: DailyRecordCreateInputDto,
  signal?: AbortSignal
@@ -2895,11 +2895,11 @@ export const dailyRecordsControllerCreate = (
   
 
 
-export const getDailyRecordsControllerCreateMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof dailyRecordsControllerCreate>>, TError,{residentUid: string;data: DailyRecordCreateInputDto}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof dailyRecordsControllerCreate>>, TError,{residentUid: string;data: DailyRecordCreateInputDto}, TContext> => {
+export const getCreateDailyRecordMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createDailyRecord>>, TError,{residentUid: string;data: DailyRecordCreateInputDto}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof createDailyRecord>>, TError,{residentUid: string;data: DailyRecordCreateInputDto}, TContext> => {
     
-const mutationKey = ['dailyRecordsControllerCreate'];
+const mutationKey = ['createDailyRecord'];
 const {mutation: mutationOptions} = options ?
       options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
       options
@@ -2909,10 +2909,10 @@ const {mutation: mutationOptions} = options ?
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof dailyRecordsControllerCreate>>, {residentUid: string;data: DailyRecordCreateInputDto}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof createDailyRecord>>, {residentUid: string;data: DailyRecordCreateInputDto}> = (props) => {
           const {residentUid,data} = props ?? {};
 
-          return  dailyRecordsControllerCreate(residentUid,data,)
+          return  createDailyRecord(residentUid,data,)
         }
 
         
@@ -2920,23 +2920,23 @@ const {mutation: mutationOptions} = options ?
 
   return  { mutationFn, ...mutationOptions }}
 
-    export type DailyRecordsControllerCreateMutationResult = NonNullable<Awaited<ReturnType<typeof dailyRecordsControllerCreate>>>
-    export type DailyRecordsControllerCreateMutationBody = DailyRecordCreateInputDto
-    export type DailyRecordsControllerCreateMutationError = unknown
+    export type CreateDailyRecordMutationResult = NonNullable<Awaited<ReturnType<typeof createDailyRecord>>>
+    export type CreateDailyRecordMutationBody = DailyRecordCreateInputDto
+    export type CreateDailyRecordMutationError = unknown
 
     /**
  * @summary 日常記録を作成
  */
-export const useDailyRecordsControllerCreate = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof dailyRecordsControllerCreate>>, TError,{residentUid: string;data: DailyRecordCreateInputDto}, TContext>, }
+export const useCreateDailyRecord = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createDailyRecord>>, TError,{residentUid: string;data: DailyRecordCreateInputDto}, TContext>, }
 ): UseMutationResult<
-        Awaited<ReturnType<typeof dailyRecordsControllerCreate>>,
+        Awaited<ReturnType<typeof createDailyRecord>>,
         TError,
         {residentUid: string;data: DailyRecordCreateInputDto},
         TContext
       > => {
 
-      const mutationOptions = getDailyRecordsControllerCreateMutationOptions(options);
+      const mutationOptions = getCreateDailyRecordMutationOptions(options);
 
       return useMutation(mutationOptions);
     }
@@ -2944,7 +2944,7 @@ export const useDailyRecordsControllerCreate = <TError = unknown,
 /**
  * @summary 日常記録を更新
  */
-export const dailyRecordsControllerUpdate = (
+export const updateDailyRecord = (
     residentUid: unknown,
     uid: string,
     dailyRecordUpdateInputDto: DailyRecordUpdateInputDto,
@@ -2961,11 +2961,11 @@ export const dailyRecordsControllerUpdate = (
   
 
 
-export const getDailyRecordsControllerUpdateMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof dailyRecordsControllerUpdate>>, TError,{residentUid: unknown;uid: string;data: DailyRecordUpdateInputDto}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof dailyRecordsControllerUpdate>>, TError,{residentUid: unknown;uid: string;data: DailyRecordUpdateInputDto}, TContext> => {
+export const getUpdateDailyRecordMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateDailyRecord>>, TError,{residentUid: unknown;uid: string;data: DailyRecordUpdateInputDto}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof updateDailyRecord>>, TError,{residentUid: unknown;uid: string;data: DailyRecordUpdateInputDto}, TContext> => {
     
-const mutationKey = ['dailyRecordsControllerUpdate'];
+const mutationKey = ['updateDailyRecord'];
 const {mutation: mutationOptions} = options ?
       options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
       options
@@ -2975,10 +2975,10 @@ const {mutation: mutationOptions} = options ?
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof dailyRecordsControllerUpdate>>, {residentUid: unknown;uid: string;data: DailyRecordUpdateInputDto}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof updateDailyRecord>>, {residentUid: unknown;uid: string;data: DailyRecordUpdateInputDto}> = (props) => {
           const {residentUid,uid,data} = props ?? {};
 
-          return  dailyRecordsControllerUpdate(residentUid,uid,data,)
+          return  updateDailyRecord(residentUid,uid,data,)
         }
 
         
@@ -2986,23 +2986,23 @@ const {mutation: mutationOptions} = options ?
 
   return  { mutationFn, ...mutationOptions }}
 
-    export type DailyRecordsControllerUpdateMutationResult = NonNullable<Awaited<ReturnType<typeof dailyRecordsControllerUpdate>>>
-    export type DailyRecordsControllerUpdateMutationBody = DailyRecordUpdateInputDto
-    export type DailyRecordsControllerUpdateMutationError = unknown
+    export type UpdateDailyRecordMutationResult = NonNullable<Awaited<ReturnType<typeof updateDailyRecord>>>
+    export type UpdateDailyRecordMutationBody = DailyRecordUpdateInputDto
+    export type UpdateDailyRecordMutationError = unknown
 
     /**
  * @summary 日常記録を更新
  */
-export const useDailyRecordsControllerUpdate = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof dailyRecordsControllerUpdate>>, TError,{residentUid: unknown;uid: string;data: DailyRecordUpdateInputDto}, TContext>, }
+export const useUpdateDailyRecord = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateDailyRecord>>, TError,{residentUid: unknown;uid: string;data: DailyRecordUpdateInputDto}, TContext>, }
 ): UseMutationResult<
-        Awaited<ReturnType<typeof dailyRecordsControllerUpdate>>,
+        Awaited<ReturnType<typeof updateDailyRecord>>,
         TError,
         {residentUid: unknown;uid: string;data: DailyRecordUpdateInputDto},
         TContext
       > => {
 
-      const mutationOptions = getDailyRecordsControllerUpdateMutationOptions(options);
+      const mutationOptions = getUpdateDailyRecordMutationOptions(options);
 
       return useMutation(mutationOptions);
     }
@@ -3010,7 +3010,7 @@ export const useDailyRecordsControllerUpdate = <TError = unknown,
 /**
  * @summary 日常記録を削除
  */
-export const dailyRecordsControllerDelete = (
+export const deleteDailyRecord = (
     residentUid: unknown,
     uid: string,
  ) => {
@@ -3024,11 +3024,11 @@ export const dailyRecordsControllerDelete = (
   
 
 
-export const getDailyRecordsControllerDeleteMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof dailyRecordsControllerDelete>>, TError,{residentUid: unknown;uid: string}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof dailyRecordsControllerDelete>>, TError,{residentUid: unknown;uid: string}, TContext> => {
+export const getDeleteDailyRecordMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteDailyRecord>>, TError,{residentUid: unknown;uid: string}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof deleteDailyRecord>>, TError,{residentUid: unknown;uid: string}, TContext> => {
     
-const mutationKey = ['dailyRecordsControllerDelete'];
+const mutationKey = ['deleteDailyRecord'];
 const {mutation: mutationOptions} = options ?
       options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
       options
@@ -3038,10 +3038,10 @@ const {mutation: mutationOptions} = options ?
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof dailyRecordsControllerDelete>>, {residentUid: unknown;uid: string}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof deleteDailyRecord>>, {residentUid: unknown;uid: string}> = (props) => {
           const {residentUid,uid} = props ?? {};
 
-          return  dailyRecordsControllerDelete(residentUid,uid,)
+          return  deleteDailyRecord(residentUid,uid,)
         }
 
         
@@ -3049,23 +3049,23 @@ const {mutation: mutationOptions} = options ?
 
   return  { mutationFn, ...mutationOptions }}
 
-    export type DailyRecordsControllerDeleteMutationResult = NonNullable<Awaited<ReturnType<typeof dailyRecordsControllerDelete>>>
+    export type DeleteDailyRecordMutationResult = NonNullable<Awaited<ReturnType<typeof deleteDailyRecord>>>
     
-    export type DailyRecordsControllerDeleteMutationError = unknown
+    export type DeleteDailyRecordMutationError = unknown
 
     /**
  * @summary 日常記録を削除
  */
-export const useDailyRecordsControllerDelete = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof dailyRecordsControllerDelete>>, TError,{residentUid: unknown;uid: string}, TContext>, }
+export const useDeleteDailyRecord = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteDailyRecord>>, TError,{residentUid: unknown;uid: string}, TContext>, }
 ): UseMutationResult<
-        Awaited<ReturnType<typeof dailyRecordsControllerDelete>>,
+        Awaited<ReturnType<typeof deleteDailyRecord>>,
         TError,
         {residentUid: unknown;uid: string},
         TContext
       > => {
 
-      const mutationOptions = getDailyRecordsControllerDeleteMutationOptions(options);
+      const mutationOptions = getDeleteDailyRecordMutationOptions(options);
 
       return useMutation(mutationOptions);
     }
@@ -3073,7 +3073,7 @@ export const useDailyRecordsControllerDelete = <TError = unknown,
 /**
  * @summary 利用者の飲料記録一覧を取得
  */
-export const beverageRecordsControllerFindByResident = (
+export const getBeverageRecords = (
     residentUid: string,
  signal?: AbortSignal
 ) => {
@@ -3086,67 +3086,67 @@ export const beverageRecordsControllerFindByResident = (
     }
   
 
-export const getBeverageRecordsControllerFindByResidentQueryKey = (residentUid: string,) => {
+export const getGetBeverageRecordsQueryKey = (residentUid: string,) => {
     return [`/residents/${residentUid}/beverage-records`] as const;
     }
 
     
-export const getBeverageRecordsControllerFindByResidentQueryOptions = <TData = Awaited<ReturnType<typeof beverageRecordsControllerFindByResident>>, TError = unknown>(residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof beverageRecordsControllerFindByResident>>, TError, TData>>, }
+export const getGetBeverageRecordsQueryOptions = <TData = Awaited<ReturnType<typeof getBeverageRecords>>, TError = unknown>(residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getBeverageRecords>>, TError, TData>>, }
 ) => {
 
 const {query: queryOptions} = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getBeverageRecordsControllerFindByResidentQueryKey(residentUid);
+  const queryKey =  queryOptions?.queryKey ?? getGetBeverageRecordsQueryKey(residentUid);
 
   
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof beverageRecordsControllerFindByResident>>> = ({ signal }) => beverageRecordsControllerFindByResident(residentUid, signal);
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getBeverageRecords>>> = ({ signal }) => getBeverageRecords(residentUid, signal);
 
       
 
       
 
-   return  { queryKey, queryFn, enabled: !!(residentUid), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof beverageRecordsControllerFindByResident>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
+   return  { queryKey, queryFn, enabled: !!(residentUid), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getBeverageRecords>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
 }
 
-export type BeverageRecordsControllerFindByResidentQueryResult = NonNullable<Awaited<ReturnType<typeof beverageRecordsControllerFindByResident>>>
-export type BeverageRecordsControllerFindByResidentQueryError = unknown
+export type GetBeverageRecordsQueryResult = NonNullable<Awaited<ReturnType<typeof getBeverageRecords>>>
+export type GetBeverageRecordsQueryError = unknown
 
 
-export function useBeverageRecordsControllerFindByResident<TData = Awaited<ReturnType<typeof beverageRecordsControllerFindByResident>>, TError = unknown>(
- residentUid: string, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof beverageRecordsControllerFindByResident>>, TError, TData>> & Pick<
+export function useGetBeverageRecords<TData = Awaited<ReturnType<typeof getBeverageRecords>>, TError = unknown>(
+ residentUid: string, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getBeverageRecords>>, TError, TData>> & Pick<
         DefinedInitialDataOptions<
-          Awaited<ReturnType<typeof beverageRecordsControllerFindByResident>>,
+          Awaited<ReturnType<typeof getBeverageRecords>>,
           TError,
-          Awaited<ReturnType<typeof beverageRecordsControllerFindByResident>>
+          Awaited<ReturnType<typeof getBeverageRecords>>
         > , 'initialData'
       >, }
 
   ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useBeverageRecordsControllerFindByResident<TData = Awaited<ReturnType<typeof beverageRecordsControllerFindByResident>>, TError = unknown>(
- residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof beverageRecordsControllerFindByResident>>, TError, TData>> & Pick<
+export function useGetBeverageRecords<TData = Awaited<ReturnType<typeof getBeverageRecords>>, TError = unknown>(
+ residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getBeverageRecords>>, TError, TData>> & Pick<
         UndefinedInitialDataOptions<
-          Awaited<ReturnType<typeof beverageRecordsControllerFindByResident>>,
+          Awaited<ReturnType<typeof getBeverageRecords>>,
           TError,
-          Awaited<ReturnType<typeof beverageRecordsControllerFindByResident>>
+          Awaited<ReturnType<typeof getBeverageRecords>>
         > , 'initialData'
       >, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useBeverageRecordsControllerFindByResident<TData = Awaited<ReturnType<typeof beverageRecordsControllerFindByResident>>, TError = unknown>(
- residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof beverageRecordsControllerFindByResident>>, TError, TData>>, }
+export function useGetBeverageRecords<TData = Awaited<ReturnType<typeof getBeverageRecords>>, TError = unknown>(
+ residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getBeverageRecords>>, TError, TData>>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
 /**
  * @summary 利用者の飲料記録一覧を取得
  */
 
-export function useBeverageRecordsControllerFindByResident<TData = Awaited<ReturnType<typeof beverageRecordsControllerFindByResident>>, TError = unknown>(
- residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof beverageRecordsControllerFindByResident>>, TError, TData>>, }
+export function useGetBeverageRecords<TData = Awaited<ReturnType<typeof getBeverageRecords>>, TError = unknown>(
+ residentUid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getBeverageRecords>>, TError, TData>>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
 
-  const queryOptions = getBeverageRecordsControllerFindByResidentQueryOptions(residentUid,options)
+  const queryOptions = getGetBeverageRecordsQueryOptions(residentUid,options)
 
   const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
 
@@ -3161,7 +3161,7 @@ export function useBeverageRecordsControllerFindByResident<TData = Awaited<Retur
 /**
  * @summary 飲料記録を作成
  */
-export const beverageRecordsControllerCreate = (
+export const createBeverageRecord = (
     residentUid: string,
     beverageRecordCreateInputDto: BeverageRecordCreateInputDto,
  signal?: AbortSignal
@@ -3178,11 +3178,11 @@ export const beverageRecordsControllerCreate = (
   
 
 
-export const getBeverageRecordsControllerCreateMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof beverageRecordsControllerCreate>>, TError,{residentUid: string;data: BeverageRecordCreateInputDto}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof beverageRecordsControllerCreate>>, TError,{residentUid: string;data: BeverageRecordCreateInputDto}, TContext> => {
+export const getCreateBeverageRecordMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createBeverageRecord>>, TError,{residentUid: string;data: BeverageRecordCreateInputDto}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof createBeverageRecord>>, TError,{residentUid: string;data: BeverageRecordCreateInputDto}, TContext> => {
     
-const mutationKey = ['beverageRecordsControllerCreate'];
+const mutationKey = ['createBeverageRecord'];
 const {mutation: mutationOptions} = options ?
       options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
       options
@@ -3192,10 +3192,10 @@ const {mutation: mutationOptions} = options ?
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof beverageRecordsControllerCreate>>, {residentUid: string;data: BeverageRecordCreateInputDto}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof createBeverageRecord>>, {residentUid: string;data: BeverageRecordCreateInputDto}> = (props) => {
           const {residentUid,data} = props ?? {};
 
-          return  beverageRecordsControllerCreate(residentUid,data,)
+          return  createBeverageRecord(residentUid,data,)
         }
 
         
@@ -3203,23 +3203,23 @@ const {mutation: mutationOptions} = options ?
 
   return  { mutationFn, ...mutationOptions }}
 
-    export type BeverageRecordsControllerCreateMutationResult = NonNullable<Awaited<ReturnType<typeof beverageRecordsControllerCreate>>>
-    export type BeverageRecordsControllerCreateMutationBody = BeverageRecordCreateInputDto
-    export type BeverageRecordsControllerCreateMutationError = unknown
+    export type CreateBeverageRecordMutationResult = NonNullable<Awaited<ReturnType<typeof createBeverageRecord>>>
+    export type CreateBeverageRecordMutationBody = BeverageRecordCreateInputDto
+    export type CreateBeverageRecordMutationError = unknown
 
     /**
  * @summary 飲料記録を作成
  */
-export const useBeverageRecordsControllerCreate = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof beverageRecordsControllerCreate>>, TError,{residentUid: string;data: BeverageRecordCreateInputDto}, TContext>, }
+export const useCreateBeverageRecord = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createBeverageRecord>>, TError,{residentUid: string;data: BeverageRecordCreateInputDto}, TContext>, }
 ): UseMutationResult<
-        Awaited<ReturnType<typeof beverageRecordsControllerCreate>>,
+        Awaited<ReturnType<typeof createBeverageRecord>>,
         TError,
         {residentUid: string;data: BeverageRecordCreateInputDto},
         TContext
       > => {
 
-      const mutationOptions = getBeverageRecordsControllerCreateMutationOptions(options);
+      const mutationOptions = getCreateBeverageRecordMutationOptions(options);
 
       return useMutation(mutationOptions);
     }
@@ -3227,7 +3227,7 @@ export const useBeverageRecordsControllerCreate = <TError = unknown,
 /**
  * @summary 飲料記録を更新
  */
-export const beverageRecordsControllerUpdate = (
+export const updateBeverageRecord = (
     residentUid: unknown,
     uid: string,
     beverageRecordUpdateInputDto: BeverageRecordUpdateInputDto,
@@ -3244,11 +3244,11 @@ export const beverageRecordsControllerUpdate = (
   
 
 
-export const getBeverageRecordsControllerUpdateMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof beverageRecordsControllerUpdate>>, TError,{residentUid: unknown;uid: string;data: BeverageRecordUpdateInputDto}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof beverageRecordsControllerUpdate>>, TError,{residentUid: unknown;uid: string;data: BeverageRecordUpdateInputDto}, TContext> => {
+export const getUpdateBeverageRecordMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateBeverageRecord>>, TError,{residentUid: unknown;uid: string;data: BeverageRecordUpdateInputDto}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof updateBeverageRecord>>, TError,{residentUid: unknown;uid: string;data: BeverageRecordUpdateInputDto}, TContext> => {
     
-const mutationKey = ['beverageRecordsControllerUpdate'];
+const mutationKey = ['updateBeverageRecord'];
 const {mutation: mutationOptions} = options ?
       options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
       options
@@ -3258,10 +3258,10 @@ const {mutation: mutationOptions} = options ?
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof beverageRecordsControllerUpdate>>, {residentUid: unknown;uid: string;data: BeverageRecordUpdateInputDto}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof updateBeverageRecord>>, {residentUid: unknown;uid: string;data: BeverageRecordUpdateInputDto}> = (props) => {
           const {residentUid,uid,data} = props ?? {};
 
-          return  beverageRecordsControllerUpdate(residentUid,uid,data,)
+          return  updateBeverageRecord(residentUid,uid,data,)
         }
 
         
@@ -3269,23 +3269,23 @@ const {mutation: mutationOptions} = options ?
 
   return  { mutationFn, ...mutationOptions }}
 
-    export type BeverageRecordsControllerUpdateMutationResult = NonNullable<Awaited<ReturnType<typeof beverageRecordsControllerUpdate>>>
-    export type BeverageRecordsControllerUpdateMutationBody = BeverageRecordUpdateInputDto
-    export type BeverageRecordsControllerUpdateMutationError = unknown
+    export type UpdateBeverageRecordMutationResult = NonNullable<Awaited<ReturnType<typeof updateBeverageRecord>>>
+    export type UpdateBeverageRecordMutationBody = BeverageRecordUpdateInputDto
+    export type UpdateBeverageRecordMutationError = unknown
 
     /**
  * @summary 飲料記録を更新
  */
-export const useBeverageRecordsControllerUpdate = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof beverageRecordsControllerUpdate>>, TError,{residentUid: unknown;uid: string;data: BeverageRecordUpdateInputDto}, TContext>, }
+export const useUpdateBeverageRecord = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateBeverageRecord>>, TError,{residentUid: unknown;uid: string;data: BeverageRecordUpdateInputDto}, TContext>, }
 ): UseMutationResult<
-        Awaited<ReturnType<typeof beverageRecordsControllerUpdate>>,
+        Awaited<ReturnType<typeof updateBeverageRecord>>,
         TError,
         {residentUid: unknown;uid: string;data: BeverageRecordUpdateInputDto},
         TContext
       > => {
 
-      const mutationOptions = getBeverageRecordsControllerUpdateMutationOptions(options);
+      const mutationOptions = getUpdateBeverageRecordMutationOptions(options);
 
       return useMutation(mutationOptions);
     }
@@ -3293,7 +3293,7 @@ export const useBeverageRecordsControllerUpdate = <TError = unknown,
 /**
  * @summary 飲料記録を削除
  */
-export const beverageRecordsControllerDelete = (
+export const deleteBeverageRecord = (
     residentUid: unknown,
     uid: string,
  ) => {
@@ -3307,11 +3307,11 @@ export const beverageRecordsControllerDelete = (
   
 
 
-export const getBeverageRecordsControllerDeleteMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof beverageRecordsControllerDelete>>, TError,{residentUid: unknown;uid: string}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof beverageRecordsControllerDelete>>, TError,{residentUid: unknown;uid: string}, TContext> => {
+export const getDeleteBeverageRecordMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteBeverageRecord>>, TError,{residentUid: unknown;uid: string}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof deleteBeverageRecord>>, TError,{residentUid: unknown;uid: string}, TContext> => {
     
-const mutationKey = ['beverageRecordsControllerDelete'];
+const mutationKey = ['deleteBeverageRecord'];
 const {mutation: mutationOptions} = options ?
       options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
       options
@@ -3321,10 +3321,10 @@ const {mutation: mutationOptions} = options ?
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof beverageRecordsControllerDelete>>, {residentUid: unknown;uid: string}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof deleteBeverageRecord>>, {residentUid: unknown;uid: string}> = (props) => {
           const {residentUid,uid} = props ?? {};
 
-          return  beverageRecordsControllerDelete(residentUid,uid,)
+          return  deleteBeverageRecord(residentUid,uid,)
         }
 
         
@@ -3332,23 +3332,23 @@ const {mutation: mutationOptions} = options ?
 
   return  { mutationFn, ...mutationOptions }}
 
-    export type BeverageRecordsControllerDeleteMutationResult = NonNullable<Awaited<ReturnType<typeof beverageRecordsControllerDelete>>>
+    export type DeleteBeverageRecordMutationResult = NonNullable<Awaited<ReturnType<typeof deleteBeverageRecord>>>
     
-    export type BeverageRecordsControllerDeleteMutationError = unknown
+    export type DeleteBeverageRecordMutationError = unknown
 
     /**
  * @summary 飲料記録を削除
  */
-export const useBeverageRecordsControllerDelete = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof beverageRecordsControllerDelete>>, TError,{residentUid: unknown;uid: string}, TContext>, }
+export const useDeleteBeverageRecord = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteBeverageRecord>>, TError,{residentUid: unknown;uid: string}, TContext>, }
 ): UseMutationResult<
-        Awaited<ReturnType<typeof beverageRecordsControllerDelete>>,
+        Awaited<ReturnType<typeof deleteBeverageRecord>>,
         TError,
         {residentUid: unknown;uid: string},
         TContext
       > => {
 
-      const mutationOptions = getBeverageRecordsControllerDeleteMutationOptions(options);
+      const mutationOptions = getDeleteBeverageRecordMutationOptions(options);
 
       return useMutation(mutationOptions);
     }
