@@ -21,13 +21,7 @@ export async function clientAction({ request }: Route.ClientActionArgs) {
     password: password as string,
   });
   localStorage.setItem("token", token.token);
-  const me = await getMe();
-  if (me.role !== "GLOBAL_ADMIN") {
-    localStorage.removeItem("token");
-    return redirect("/login");
-  } else {
-    return redirect("/home");
-  }
+  return redirect("/dashboard");
 }
 
 export default function Login({ actionData }: Route.ComponentProps) {
