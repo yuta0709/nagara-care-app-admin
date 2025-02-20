@@ -4,6 +4,9 @@ import { getMe } from "~/api/nagaraCareAPI";
 import { Button } from "~/components/ui/button";
 
 export async function clientLoader({ request }: Route.ClientLoaderArgs) {
+  if (!localStorage.getItem("token")) {
+    return redirect("/login");
+  }
   try {
     const me = await getMe();
     if (me.role !== "GLOBAL_ADMIN") {
