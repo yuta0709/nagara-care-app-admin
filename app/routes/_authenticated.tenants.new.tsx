@@ -34,11 +34,11 @@ export default function NewTenantPage({ actionData }: Route.ComponentProps) {
               </Link>
             </Button>
             <h1 className="text-2xl font-semibold tracking-tight">
-              新規テナント作成
+              新規施設作成
             </h1>
           </div>
           <p className="text-sm text-muted-foreground pl-10">
-            新しいテナントを作成します。
+            新しい施設を作成します。
           </p>
         </div>
       </div>
@@ -47,20 +47,20 @@ export default function NewTenantPage({ actionData }: Route.ComponentProps) {
       <div className="mx-auto max-w-2xl">
         <Card>
           <CardHeader>
-            <CardTitle>テナント情報</CardTitle>
+            <CardTitle>施設情報</CardTitle>
             <CardDescription>
-              テナントの基本情報を入力してください。
+              施設の基本情報を入力してください。
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Form method="post" className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="name">テナント名</Label>
+                <Label htmlFor="name">施設名</Label>
                 <Input
                   id="name"
                   name="name"
                   type="text"
-                  placeholder="テナント名を入力"
+                  placeholder="施設名を入力"
                   required
                 />
               </div>

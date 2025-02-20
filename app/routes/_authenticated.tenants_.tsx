@@ -22,15 +22,15 @@ export default function TenantsPage() {
       {/* ヘッダーセクション */}
       <div className="flex items-center justify-between">
         <div className="space-y-1">
-          <h1 className="text-2xl font-semibold tracking-tight">テナント</h1>
+          <h1 className="text-2xl font-semibold tracking-tight">施設</h1>
           <p className="text-sm text-muted-foreground">
-            テナントの一覧を管理・作成できます。
+            施設の一覧を管理・作成できます。
           </p>
         </div>
         <Button asChild>
           <Link to="new" className="gap-1">
             <PlusIcon className="h-4 w-4" />
-            新規テナント
+            新規施設
           </Link>
         </Button>
       </div>
@@ -40,7 +40,7 @@ export default function TenantsPage() {
         <Table>
           <TableHeader>
             <TableRow className="hover:bg-transparent">
-              <TableHead className="w-[400px]">テナント名</TableHead>
+              <TableHead className="w-[400px]">施設名</TableHead>
               <TableHead className="text-right">作成日時</TableHead>
             </TableRow>
           </TableHeader>
@@ -76,7 +76,7 @@ export default function TenantsPage() {
 
       {/* 件数表示 */}
       <div className="text-sm text-muted-foreground">
-        {tenantsData?.total ?? 0} 件のテナント
+        {tenantsData?.total ?? 0} 件の施設
       </div>
     </div>
   );

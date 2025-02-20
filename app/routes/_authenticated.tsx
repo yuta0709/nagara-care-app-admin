@@ -47,7 +47,7 @@ export default function AuthenticatedLayout({
                 to="/tenants"
                 className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
               >
-                テナント管理
+                施設一覧
               </Link>
             </div>
 

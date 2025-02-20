@@ -63,7 +63,7 @@ export default function TenantPage({ loaderData }: Route.ComponentProps) {
             </h1>
           </div>
           <p className="text-sm text-muted-foreground pl-10">
-            テナント情報の詳細と所属ユーザーを確認できます。
+            施設情報の詳細と所属ユーザーを確認できます。
           </p>
         </div>
         <Form method="post">
@@ -75,30 +75,30 @@ export default function TenantPage({ loaderData }: Route.ComponentProps) {
             onClick={(e) => {
               if (
                 !confirm(
-                  "このテナントを削除してもよろしいですか？\n※所属するユーザーも全て削除されます。"
+                  "この施設を削除してもよろしいですか？\n※所属するユーザーも全て削除されます。"
                 )
               ) {
                 e.preventDefault();
               }
             }}
           >
-            テナントを削除
+            施設を削除
           </Button>
         </Form>
       </div>
 
-      {/* テナント情報 */}
+      {/* 施設情報 */}
       <div className="grid gap-6">
         <Card>
           <CardHeader>
             <CardTitle>基本情報</CardTitle>
-            <CardDescription>テナントの基本情報です。</CardDescription>
+            <CardDescription>施設の基本情報です。</CardDescription>
           </CardHeader>
           <CardContent>
             <dl className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
                 <dt className="text-sm font-medium text-muted-foreground">
-                  テナントID
+                  施設ID
                 </dt>
                 <dd className="text-sm">{tenant.uid}</dd>
               </div>
@@ -121,7 +121,7 @@ export default function TenantPage({ loaderData }: Route.ComponentProps) {
               <div>
                 <CardTitle>所属ユーザー</CardTitle>
                 <CardDescription>
-                  テナントに所属するユーザーの一覧です。
+                  施設に所属するユーザーの一覧です。
                 </CardDescription>
               </div>
               <Button asChild>
