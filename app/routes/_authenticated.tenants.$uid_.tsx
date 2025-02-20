@@ -1,6 +1,7 @@
-import { getTenant, getUsers } from "~/api/nagaraCareAPI";
+import { getTenant, getUsers, deleteTenant } from "~/api/nagaraCareAPI";
 import type { Route } from "./+types/_authenticated.tenants.$uid_";
-import { Link } from "react-router";
+import { Form, Link, redirect } from "react-router";
+
 import { Button } from "~/components/ui/button";
 import {
   Card,
@@ -27,6 +28,21 @@ export async function clientLoader({ params }: Route.LoaderArgs) {
   return { tenant, users };
 }
 
+export async function clientAction({
+  request,
+  params,
+}: Route.ClientActionArgs) {
+  const formData = await request.formData();
+  const intent = formData.get("intent");
+
+  if (intent === "delete") {
+    await deleteTenant(params.uid);
+    return redirect("/tenants");
+  }
+
+  return null;
+}
+
 export default function TenantPage({ loaderData }: Route.ComponentProps) {
   const { tenant, users } = loaderData;
 
@@ -50,6 +66,25 @@ export default function TenantPage({ loaderData }: Route.ComponentProps) {
             テナント情報の詳細と所属ユーザーを確認できます。
           </p>
         </div>
+        <Form method="post">
+          <Button
+            type="submit"
+            name="intent"
+            value="delete"
+            variant="destructive"
+            onClick={(e) => {
+              if (
+                !confirm(
+                  "このテナントを削除してもよろしいですか？\n※所属するユーザーも全て削除されます。"
+                )
+              ) {
+                e.preventDefault();
+              }
+            }}
+          >
+            テナントを削除
+          </Button>
+        </Form>
       </div>
 
       {/* テナント情報 */}
