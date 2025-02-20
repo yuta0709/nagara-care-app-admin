@@ -16,12 +16,17 @@ export async function clientAction({ request }: Route.ClientActionArgs) {
   const formData = await request.formData();
   const userId = formData.get("userId");
   const password = formData.get("password");
-  const token = await login({
-    loginId: userId as string,
-    password: password as string,
-  });
-  localStorage.setItem("token", token.token);
-  return redirect("/");
+
+  try {
+    const token = await login({
+      loginId: userId as string,
+      password: password as string,
+    });
+    localStorage.setItem("token", token.token);
+    return redirect("/");
+  } catch (error) {
+    return { error: "ユーザーIDまたはパスワードが正しくありません" };
+  }
 }
 
 export default function Login({ actionData }: Route.ComponentProps) {
@@ -35,6 +40,11 @@ export default function Login({ actionData }: Route.ComponentProps) {
           </CardHeader>
           <CardContent>
             <Form className="space-y-6" method="post">
+              {actionData?.error && (
+                <div className="text-sm text-red-500 font-medium">
+                  {actionData.error}
+                </div>
+              )}
               <div className="space-y-2">
                 <Label htmlFor="userId">ユーザーID</Label>
                 <Input
