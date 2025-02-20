@@ -1,4 +1,5 @@
-import type { Route } from "./+types/_authenticated.tenants";
+import type { Route } from "./+types/_authenticated.tenants_";
+import { Link, useNavigate } from "react-router";
 import { useGetTenants } from "~/api/nagaraCareAPI";
 import { Button } from "~/components/ui/button";
 import { Skeleton } from "~/components/ui/skeleton";
@@ -15,7 +16,7 @@ import { PlusIcon } from "@radix-ui/react-icons";
 
 export default function TenantsPage() {
   const { data: tenantsData, isLoading } = useGetTenants();
-
+  const navigate = useNavigate();
   return (
     <div className="space-y-8">
       {/* ヘッダーセクション */}
@@ -26,9 +27,11 @@ export default function TenantsPage() {
             テナントの一覧を管理・作成できます。
           </p>
         </div>
-        <Button className="gap-1">
-          <PlusIcon className="h-4 w-4" />
-          新規テナント
+        <Button asChild>
+          <Link to="new" className="gap-1">
+            <PlusIcon className="h-4 w-4" />
+            新規テナント
+          </Link>
         </Button>
       </div>
 
@@ -59,6 +62,7 @@ export default function TenantsPage() {
                   <TableRow
                     key={tenant.uid}
                     className="group cursor-pointer transition-colors hover:bg-muted/50"
+                    onClick={() => navigate(tenant.uid)}
                   >
                     <TableCell className="font-medium">{tenant.name}</TableCell>
                     <TableCell className="text-right text-muted-foreground">

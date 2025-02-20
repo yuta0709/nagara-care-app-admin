@@ -163,9 +163,33 @@ paths:
       responses:
         "201":
           description: テナントが正常に作成されました
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TenantDto"
       summary: テナントを作成する
       tags: *a3
   /tenants/{uid}:
+    get:
+      operationId: getTenant
+      parameters:
+        - name: uid
+          required: true
+          in: path
+          description: テナントUID
+          schema:
+            type: string
+      responses:
+        "200":
+          description: テナントの詳細取得に成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TenantDto"
+      security:
+        - JWT-auth: []
+      summary: テナントの詳細を取得
+      tags: *a3
     patch:
       operationId: updateTenant
       parameters:
@@ -187,7 +211,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/TenantCreateOutputDto"
+                $ref: "#/components/schemas/TenantDto"
       security:
         - JWT-auth: []
       summary: テナントを更新
@@ -1064,6 +1088,23 @@ components:
       required:
         - items
         - total
+    TenantDto:
+      type: object
+      properties:
+        uid:
+          type: string
+          description: テナントUID
+        name:
+          type: string
+          description: テナント名
+        createdAt:
+          format: date-time
+          type: string
+          description: 作成日時
+      required:
+        - uid
+        - name
+        - createdAt
     TenantCreateInputDto:
       type: object
       properties:
@@ -1082,23 +1123,6 @@ components:
           example: 介護施設A
       required:
         - name
-    TenantCreateOutputDto:
-      type: object
-      properties:
-        uid:
-          type: string
-          description: テナントID
-        name:
-          type: string
-          description: テナント名
-        createdAt:
-          format: date-time
-          type: string
-          description: 作成日時
-      required:
-        - uid
-        - name
-        - createdAt
     ResidentDto:
       type: object
       properties:

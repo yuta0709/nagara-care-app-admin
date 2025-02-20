@@ -149,6 +149,15 @@ export interface TenantListResponseDto {
   total: number;
 }
 
+export interface TenantDto {
+  /** テナントUID */
+  uid: string;
+  /** テナント名 */
+  name: string;
+  /** 作成日時 */
+  createdAt: string;
+}
+
 export interface TenantCreateInputDto {
   /** テナント名 */
   name: string;
@@ -157,15 +166,6 @@ export interface TenantCreateInputDto {
 export interface TenantUpdateInputDto {
   /** テナント名 */
   name: string;
-}
-
-export interface TenantCreateOutputDto {
-  /** テナントID */
-  uid: string;
-  /** テナント名 */
-  name: string;
-  /** 作成日時 */
-  createdAt: string;
 }
 
 /**
@@ -1377,7 +1377,7 @@ export const createTenant = (
 ) => {
       
       
-      return customInstance<void>(
+      return customInstance<TenantDto>(
       {url: `/tenants`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
       data: tenantCreateInputDto, signal
@@ -1434,6 +1434,94 @@ export const useCreateTenant = <TError = unknown,
     }
     
 /**
+ * @summary テナントの詳細を取得
+ */
+export const getTenant = (
+    uid: string,
+ signal?: AbortSignal
+) => {
+      
+      
+      return customInstance<TenantDto>(
+      {url: `/tenants/${uid}`, method: 'GET', signal
+    },
+      );
+    }
+  
+
+export const getGetTenantQueryKey = (uid: string,) => {
+    return [`/tenants/${uid}`] as const;
+    }
+
+    
+export const getGetTenantQueryOptions = <TData = Awaited<ReturnType<typeof getTenant>>, TError = unknown>(uid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getTenant>>, TError, TData>>, }
+) => {
+
+const {query: queryOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetTenantQueryKey(uid);
+
+  
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getTenant>>> = ({ signal }) => getTenant(uid, signal);
+
+      
+
+      
+
+   return  { queryKey, queryFn, enabled: !!(uid), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getTenant>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
+}
+
+export type GetTenantQueryResult = NonNullable<Awaited<ReturnType<typeof getTenant>>>
+export type GetTenantQueryError = unknown
+
+
+export function useGetTenant<TData = Awaited<ReturnType<typeof getTenant>>, TError = unknown>(
+ uid: string, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getTenant>>, TError, TData>> & Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getTenant>>,
+          TError,
+          Awaited<ReturnType<typeof getTenant>>
+        > , 'initialData'
+      >, }
+
+  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetTenant<TData = Awaited<ReturnType<typeof getTenant>>, TError = unknown>(
+ uid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getTenant>>, TError, TData>> & Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getTenant>>,
+          TError,
+          Awaited<ReturnType<typeof getTenant>>
+        > , 'initialData'
+      >, }
+
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetTenant<TData = Awaited<ReturnType<typeof getTenant>>, TError = unknown>(
+ uid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getTenant>>, TError, TData>>, }
+
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+/**
+ * @summary テナントの詳細を取得
+ */
+
+export function useGetTenant<TData = Awaited<ReturnType<typeof getTenant>>, TError = unknown>(
+ uid: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getTenant>>, TError, TData>>, }
+
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+
+  const queryOptions = getGetTenantQueryOptions(uid,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
+
+  query.queryKey = queryOptions.queryKey ;
+
+  return query;
+}
+
+
+
+
+/**
  * @summary テナントを更新
  */
 export const updateTenant = (
@@ -1442,7 +1530,7 @@ export const updateTenant = (
  ) => {
       
       
-      return customInstance<TenantCreateOutputDto>(
+      return customInstance<TenantDto>(
       {url: `/tenants/${uid}`, method: 'PATCH',
       headers: {'Content-Type': 'application/json', },
       data: tenantUpdateInputDto
