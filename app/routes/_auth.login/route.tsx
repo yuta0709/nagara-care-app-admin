@@ -21,7 +21,7 @@ export async function clientAction({ request }: Route.ClientActionArgs) {
     password: password as string,
   });
   localStorage.setItem("token", token.token);
-  return redirect("/dashboard");
+  return redirect("/");
 }
 
 export default function Login({ actionData }: Route.ComponentProps) {
