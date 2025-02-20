@@ -54,7 +54,7 @@ export default function NewUserPage() {
         <h1 className="text-2xl font-bold">新規ユーザー作成</h1>
         <Button
           variant="outline"
-          onClick={() => navigate(`/tenants/${tenant.id}`)}
+          onClick={() => navigate(`/tenants/${tenant.uid}`)}
         >
           戻る
         </Button>
@@ -122,7 +122,7 @@ export default function NewUserPage() {
             <div className="flex justify-end space-x-2">
               <Button
                 variant="outline"
-                onClick={() => navigate(`/tenants/${tenant.id}`)}
+                onClick={() => navigate(`/tenants/${tenant.uid}`)}
               >
                 キャンセル
               </Button>
