@@ -1,4 +1,4 @@
-import type { Route } from "./+types/_authenticated";
+import type { Route } from "./+types/_authenticated._index";
 import { Link, Outlet, redirect } from "react-router";
 import { getMe } from "~/api/nagaraCareAPI";
 import { Button } from "~/components/ui/button";
