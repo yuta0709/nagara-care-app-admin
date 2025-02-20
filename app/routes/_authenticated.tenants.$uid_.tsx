@@ -1,5 +1,5 @@
 import { getTenant, getUsers } from "~/api/nagaraCareAPI";
-import type { Route } from "./+types/_authenticated.tenants.$uid";
+import type { Route } from "./+types/_authenticated.tenants.$uid_";
 import { Link } from "react-router";
 import { Button } from "~/components/ui/button";
 import {
